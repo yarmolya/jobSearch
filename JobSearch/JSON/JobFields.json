@@ -1,0 +1,155 @@
+[
+  {
+    "category_en": "Healthcare",
+    "category_uk": "Охорона здоров'я",
+    "fields": [
+      { "en": "General Practitioner", "uk": "Терапевт" },
+      { "en": "Nursing", "uk": "Медсестринство" },
+      { "en": "Surgery", "uk": "Хірургія" },
+      { "en": "Pharmacy", "uk": "Фармація" },
+      { "en": "Medical Laboratory", "uk": "Медична лабораторія" },
+      { "en": "Radiology", "uk": "Радіологія" },
+      { "en": "Physiotherapy", "uk": "Фізіотерапія" },
+      { "en": "Emergency Medicine", "uk": "Невідкладна медицина" },
+      { "en": "Pediatrics", "uk": "Педіатрія" },
+      { "en": "Dentistry", "uk": "Стоматологія" },
+      { "en": "Anesthesiology", "uk": "Анестезіологія" },
+      { "en": "Psychiatry", "uk": "Психіатрія" }
+    ]
+  },
+  {
+    "category_en": "IT",
+    "category_uk": "Інформаційні технології",
+    "fields": [
+      { "en": "Software Development", "uk": "Розробка програмного забезпечення" },
+      { "en": "Network Administration", "uk": "Адміністрування мереж" },
+      { "en": "Cybersecurity", "uk": "Кібербезпека" },
+      { "en": "Technical Support", "uk": "Технічна підтримка" },
+      { "en": "Data Analysis", "uk": "Аналіз даних" },
+      { "en": "AI & Machine Learning", "uk": "Штучний інтелект та машинне навчання" },
+      { "en": "Web Development", "uk": "Веб-розробка" },
+      { "en": "Mobile Development", "uk": "Мобільна розробка" },
+      { "en": "DevOps Engineering", "uk": "Інженерія DevOps" },
+      { "en": "Cloud Computing", "uk": "Хмарні обчислення" },
+      { "en": "IT Project Management", "uk": "Управління ІТ-проєктами" },
+      { "en": "UI/UX Design", "uk": "Дизайн інтерфейсу та користувацького досвіду" }
+    ]
+  },
+  {
+    "category_en": "Construction",
+    "category_uk": "Будівництво",
+    "fields": [
+      { "en": "Civil Engineering", "uk": "Цивільна інженерія" },
+      { "en": "Architecture", "uk": "Архітектура" },
+      { "en": "Surveying", "uk": "Геодезія" },
+      { "en": "Project Management", "uk": "Управління проєктами" },
+      { "en": "Masonry", "uk": "Кам'яні роботи" },
+      { "en": "Carpentry", "uk": "Столярні роботи" },
+      { "en": "Plumbing", "uk": "Сантехнічні роботи" },
+      { "en": "Electrical Installation", "uk": "Електромонтажні роботи" },
+      { "en": "Welding", "uk": "Зварювальні роботи" },
+      { "en": "Roofing", "uk": "Покрівельні роботи" },
+      { "en": "Interior Finishing", "uk": "Внутрішнє оздоблення" },
+      { "en": "Heavy Equipment Operation", "uk": "Управління важкою технікою" }
+    ]
+  },
+  {
+    "category_en": "Education",
+    "category_uk": "Освіта",
+    "fields": [
+      { "en": "Primary Education", "uk": "Початкова освіта" },
+      { "en": "Secondary Education", "uk": "Середня освіта" },
+      { "en": "Special Education", "uk": "Спеціальна освіта" },
+      { "en": "Higher Education", "uk": "Вища освіта" },
+      { "en": "Educational Administration", "uk": "Адміністрування освіти" },
+      { "en": "Curriculum Development", "uk": "Розробка навчальних програм" },
+      { "en": "Vocational Education", "uk": "Професійно-технічна освіта" },
+      { "en": "Language Teaching", "uk": "Викладання мов" },
+      { "en": "Early Childhood Education", "uk": "Дошкільна освіта" },
+      { "en": "Adult Education", "uk": "Освіта для дорослих" },
+      { "en": "Educational Counseling", "uk": "Освітнє консультування" }
+    ]
+  },
+  {
+    "category_en": "Retail",
+    "category_uk": "Роздрібна торгівля",
+    "fields": [
+      { "en": "Sales Associate", "uk": "Продавець-консультант" },
+      { "en": "Store Management", "uk": "Управління магазином" },
+      { "en": "Visual Merchandising", "uk": "Візуальний мерчандайзинг" },
+      { "en": "Inventory Control", "uk": "Контроль запасів" },
+      { "en": "Customer Service", "uk": "Обслуговування клієнтів" },
+      { "en": "Cashier", "uk": "Касир" },
+      { "en": "E-commerce Management", "uk": "Управління електронною комерцією" },
+      { "en": "Supply Chain Coordination", "uk": "Координація ланцюга постачання" },
+      { "en": "Product Sourcing", "uk": "Закупівля товарів" },
+      { "en": "Retail Marketing", "uk": "Маркетинг у роздрібній торгівлі" },
+      { "en": "Store Security", "uk": "Охорона магазину" }
+    ]
+  },
+  {
+    "category_en": "Finance & Banking",
+    "category_uk": "Фінанси та банківська справа",
+    "fields": [
+      { "en": "Accounting", "uk": "Бухгалтерія" },
+      { "en": "Financial Analysis", "uk": "Фінансовий аналіз" },
+      { "en": "Investment Banking", "uk": "Інвестиційний банкінг" },
+      { "en": "Risk Management", "uk": "Управління ризиками" },
+      { "en": "Loan Officer", "uk": "Кредитний спеціаліст" },
+      { "en": "Compliance", "uk": "Дотримання нормативних вимог" },
+      { "en": "Auditing", "uk": "Аудит" },
+      { "en": "Tax Consulting", "uk": "Податковий консалтинг" },
+      { "en": "Treasury Management", "uk": "Управління казначейством" },
+      { "en": "Financial Planning", "uk": "Фінансове планування" }
+    ]
+  },
+  {
+    "category_en": "Transportation & Logistics",
+    "category_uk": "Транспорт та логістика",
+    "fields": [
+      { "en": "Truck Driving", "uk": "Водіння вантажівки" },
+      { "en": "Warehouse Management", "uk": "Управління складом" },
+      { "en": "Logistics Coordination", "uk": "Координація логістики" },
+      { "en": "Supply Chain Management", "uk": "Управління ланцюгами постачання" },
+      { "en": "Fleet Management", "uk": "Управління автопарком" },
+      { "en": "Customs Brokerage", "uk": "Митне брокерство" },
+      { "en": "Freight Forwarding", "uk": "Експедирування вантажів" },
+      { "en": "Passenger Transport", "uk": "Пасажирські перевезення" },
+      { "en": "Logistics Analysis", "uk": "Аналіз логістики" },
+      { "en": "Port Operations", "uk": "Портові операції" }
+    ]
+  },
+  {
+    "category_en": "Hospitality & Tourism",
+    "category_uk": "Готельно-ресторанний бізнес та туризм",
+    "fields": [
+      { "en": "Hotel Management", "uk": "Управління готелем" },
+      { "en": "Front Desk Operations", "uk": "Робота на рецепції" },
+      { "en": "Food & Beverage Management", "uk": "Управління харчуванням" },
+      { "en": "Housekeeping", "uk": "Прибирання номерів" },
+      { "en": "Event Planning", "uk": "Організація подій" },
+      { "en": "Tour Guiding", "uk": "Екскурсійне обслуговування" },
+      { "en": "Travel Agency Operations", "uk": "Робота туристичної агенції" },
+      { "en": "Restaurant Management", "uk": "Управління рестораном" },
+      { "en": "Culinary Arts", "uk": "Кулінарне мистецтво" },
+      { "en": "Bartending", "uk": "Барменство" }
+    ]
+  },
+  {
+    "category_en": "Law & Legal Services",
+    "category_uk": "Право та юридичні послуги",
+    "fields": [
+      { "en": "Legal Consulting", "uk": "Юридичний консалтинг" },
+      { "en": "Litigation", "uk": "Судова практика" },
+      { "en": "Corporate Law", "uk": "Корпоративне право" },
+      { "en": "Criminal Law", "uk": "Кримінальне право" },
+      { "en": "Family Law", "uk": "Сімейне право" },
+      { "en": "Intellectual Property Law", "uk": "Право інтелектуальної власності" },
+      { "en": "Real Estate Law", "uk": "Нерухоме право" },
+      { "en": "Paralegal", "uk": "Помічник юриста" },
+      { "en": "Contract Law", "uk": "Договірне право" },
+      { "en": "Immigration Law", "uk": "Міграційне право" }
+    ]
+  }
+]
+

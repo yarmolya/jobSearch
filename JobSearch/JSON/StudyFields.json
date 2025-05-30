@@ -1,0 +1,69 @@
+[
+  {
+    "category_en": "Medicine",
+    "category_uk": "Медицина",
+    "fields": [
+      { "en": "General Medicine", "uk": "Загальна медицина" },
+      { "en": "Pediatrics", "uk": "Педіатрія" },
+      { "en": "Dentistry", "uk": "Стоматологія" },
+      { "en": "Pharmacy", "uk": "Фармація" },
+      { "en": "Nursing", "uk": "Медсестринство" }
+    ]
+  },
+  {
+    "category_en": "Engineering",
+    "category_uk": "Інженерія",
+    "fields": [
+      { "en": "Mechanical Engineering", "uk": "Механічна інженерія" },
+      { "en": "Electrical Engineering", "uk": "Електротехніка" },
+      { "en": "Civil Engineering", "uk": "Цивільна інженерія" },
+      { "en": "Computer Engineering", "uk": "Комп'ютерна інженерія" },
+      { "en": "Chemical Engineering", "uk": "Хімічна інженерія" }
+    ]
+  },
+  {
+    "category_en": "IT & Computer Science",
+    "category_uk": "ІТ та комп’ютерні науки",
+    "fields": [
+      { "en": "Software Development", "uk": "Розробка програмного забезпечення" },
+      { "en": "Data Science", "uk": "Наука про дані" },
+      { "en": "Cybersecurity", "uk": "Кібербезпека" },
+      { "en": "Artificial Intelligence", "uk": "Штучний інтелект" },
+      { "en": "Web Development", "uk": "Веб-розробка" }
+    ]
+  },
+  {
+    "category_en": "Business & Management",
+    "category_uk": "Бізнес та менеджмент",
+    "fields": [
+      { "en": "Marketing", "uk": "Маркетинг" },
+      { "en": "Finance", "uk": "Фінанси" },
+      { "en": "Human Resources", "uk": "Управління персоналом" },
+      { "en": "Logistics", "uk": "Логістика" },
+      { "en": "Entrepreneurship", "uk": "Підприємництво" }
+    ]
+  },
+  {
+    "category_en": "Education",
+    "category_uk": "Освіта",
+    "fields": [
+      { "en": "Primary Education", "uk": "Початкова освіта" },
+      { "en": "Secondary Education", "uk": "Середня освіта" },
+      { "en": "Special Education", "uk": "Спеціальна освіта" },
+      { "en": "Educational Management", "uk": "Управління освітою" },
+      { "en": "Pedagogy", "uk": "Педагогіка" }
+    ]
+  },
+  {
+    "category_en": "Art & Design",
+    "category_uk": "Мистецтво та дизайн",
+    "fields": [
+      { "en": "Graphic Design", "uk": "Графічний дизайн" },
+      { "en": "Fine Arts", "uk": "Образотворче мистецтво" },
+      { "en": "Fashion Design", "uk": "Дизайн одягу" },
+      { "en": "Interior Design", "uk": "Інтер'єрний дизайн" },
+      { "en": "Photography", "uk": "Фотографія" }
+    ]
+  }
+]
+

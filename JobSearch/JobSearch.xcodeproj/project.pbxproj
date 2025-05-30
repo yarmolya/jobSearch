@@ -1,0 +1,965 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EF0430EF2DAC2AA100D06CF1 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0430EE2DAC2AA100D06CF1 /* LanguageManager.swift */; };
+		EF0430F12DAC2AE000D06CF1 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0430F02DAC2AE000D06CF1 /* Bundle+Extension.swift */; };
+		EF0430F32DAC45D000D06CF1 /* LanguageSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0430F22DAC45D000D06CF1 /* LanguageSelectionView.swift */; };
+		EF0430F62DAC46C000D06CF1 /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0430F52DAC46C000D06CF1 /* String+Localized.swift */; };
+		EF2779A02DDB52B2002843A3 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF27799F2DDB52B2002843A3 /* AuthService.swift */; };
+		EF3579B62DCCA355006C32CC /* Languages.json in Resources */ = {isa = PBXBuildFile; fileRef = EF3579B52DCCA355006C32CC /* Languages.json */; };
+		EF3579B82DCCA36F006C32CC /* LanguageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3579B72DCCA36F006C32CC /* LanguageViewModel.swift */; };
+		EF3579BA2DCCA3E0006C32CC /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3579B92DCCA3E0006C32CC /* Language.swift */; };
+		EF3579BC2DCCA6DD006C32CC /* LanguageEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3579BB2DCCA6DD006C32CC /* LanguageEntryView.swift */; };
+		EF3814A52DAFD16400C23E15 /* StudyFields.json in Resources */ = {isa = PBXBuildFile; fileRef = EF3814A42DAFD16400C23E15 /* StudyFields.json */; };
+		EF3814A72DAFD1B700C23E15 /* StudyField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3814A62DAFD1B700C23E15 /* StudyField.swift */; };
+		EF3814A92DAFD24200C23E15 /* StudyFieldViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3814A82DAFD24200C23E15 /* StudyFieldViewModel.swift */; };
+		EF59078C2DB8F6B800182D06 /* CreateJobVacancyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF59078B2DB8F6B800182D06 /* CreateJobVacancyView.swift */; };
+		EF59078E2DB8FA9500182D06 /* JobSeekerMatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF59078D2DB8FA9500182D06 /* JobSeekerMatchView.swift */; };
+		EF6337622DBAA85A00521C53 /* TopsisModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6337612DBAA85A00521C53 /* TopsisModel.swift */; };
+		EF6337652DBAA8FC00521C53 /* TopsisCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6337642DBAA8FC00521C53 /* TopsisCalculator.swift */; };
+		EF6337672DBAA94600521C53 /* TopsisRankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6337662DBAA94600521C53 /* TopsisRankingView.swift */; };
+		EF6337692DBAA9E500521C53 /* CandidateDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6337682DBAA9E500521C53 /* CandidateDetailView.swift */; };
+		EF63376B2DBAAA3000521C53 /* TopsisRankingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF63376A2DBAAA3000521C53 /* TopsisRankingViewModel.swift */; };
+		EF781BC22DC7CD1D00CBEE18 /* WorkExperienceEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF781BC12DC7CD1D00CBEE18 /* WorkExperienceEntryView.swift */; };
+		EF8359AB2DAE6DBE00A0BD06 /* JobSeekerProfileEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8359AA2DAE6DBE00A0BD06 /* JobSeekerProfileEditorView.swift */; };
+		EF8359AD2DAE6EBC00A0BD06 /* OnboardingSurveyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8359AC2DAE6EBC00A0BD06 /* OnboardingSurveyView.swift */; };
+		EF8359AF2DAE734B00A0BD06 /* JobSeekerHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8359AE2DAE734B00A0BD06 /* JobSeekerHomeView.swift */; };
+		EF8359B32DAE76D400A0BD06 /* JobBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8359B22DAE76D300A0BD06 /* JobBody.swift */; };
+		EF8359B82DAE7F0300A0BD06 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8359B72DAE7F0300A0BD06 /* LoginView.swift */; };
+		EF8359BA2DAE908600A0BD06 /* CountrySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8359B92DAE908600A0BD06 /* CountrySearchViewModel.swift */; };
+		EF8359BC2DAE90DD00A0BD06 /* CitySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8359BB2DAE90DD00A0BD06 /* CitySearchViewModel.swift */; };
+		EF83FA782DCBA35200147062 /* WorkExperience.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF83FA772DCBA35200147062 /* WorkExperience.swift */; };
+		EF86E6A92DD61C3900FD434D /* CVUploadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF86E6A82DD61C3900FD434D /* CVUploadView.swift */; };
+		EFA178EC2DB67B0B00A7614B /* JobFields.json in Resources */ = {isa = PBXBuildFile; fileRef = EFA178EB2DB67B0B00A7614B /* JobFields.json */; };
+		EFA178EE2DB67B5400A7614B /* JobField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA178ED2DB67B5400A7614B /* JobField.swift */; };
+		EFA178F02DB67BBA00A7614B /* JobFieldViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA178EF2DB67BBA00A7614B /* JobFieldViewModel.swift */; };
+		EFA1E83B2DE081C10027E2DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFA1E83A2DE081C10027E2DB /* Assets.xcassets */; };
+		EFCB75D72DA66391003FA8F8 /* JobSeekerRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCB75D62DA66391003FA8F8 /* JobSeekerRegisterView.swift */; };
+		EFCB75D92DA6673E003FA8F8 /* EmployerProfileEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCB75D82DA6673E003FA8F8 /* EmployerProfileEditorView.swift */; };
+		EFCB75DB2DA66BC3003FA8F8 /* EmployerHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCB75DA2DA66BC3003FA8F8 /* EmployerHomeView.swift */; };
+		EFEB51502DA40B1B00CF94B8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFEB514F2DA40B1B00CF94B8 /* ContentView.swift */; };
+		EFEB515A2DA40C5500CF94B8 /* JobSearchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFEB51592DA40C5500CF94B8 /* JobSearchApp.swift */; };
+		EFEB51672DA4252700CF94B8 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = EFEB51662DA4252700CF94B8 /* FirebaseAnalytics */; };
+		EFEB51692DA4252700CF94B8 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = EFEB51682DA4252700CF94B8 /* FirebaseAnalyticsOnDeviceConversion */; };
+		EFEB516B2DA4252700CF94B8 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = EFEB516A2DA4252700CF94B8 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		EFEB516D2DA4252700CF94B8 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = EFEB516C2DA4252700CF94B8 /* FirebaseAppCheck */; };
+		EFEB516F2DA4252700CF94B8 /* FirebaseAppDistribution-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = EFEB516E2DA4252700CF94B8 /* FirebaseAppDistribution-Beta */; };
+		EFEB51712DA4266D00CF94B8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EFEB51702DA4266D00CF94B8 /* GoogleService-Info.plist */; };
+		EFEB51732DA4275300CF94B8 /* EmployerRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFEB51722DA4275300CF94B8 /* EmployerRegisterView.swift */; };
+		EFEB51752DA44A7800CF94B8 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = EFEB51742DA44A7800CF94B8 /* FirebaseAuth */; };
+		EFEB51772DA44A7800CF94B8 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = EFEB51762DA44A7800CF94B8 /* FirebaseAuthCombine-Community */; };
+		EFEB51792DA44A7800CF94B8 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = EFEB51782DA44A7800CF94B8 /* FirebaseCore */; };
+		EFEB517B2DA44A7800CF94B8 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = EFEB517A2DA44A7800CF94B8 /* FirebaseCrashlytics */; };
+		EFEB517D2DA44A7800CF94B8 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = EFEB517C2DA44A7800CF94B8 /* FirebaseDatabase */; };
+		EFEB517F2DA44A7800CF94B8 /* FirebaseDynamicLinks in Frameworks */ = {isa = PBXBuildFile; productRef = EFEB517E2DA44A7800CF94B8 /* FirebaseDynamicLinks */; };
+		EFEB51812DA44A7800CF94B8 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = EFEB51802DA44A7800CF94B8 /* FirebaseFirestore */; };
+		EFEB51832DA44A7800CF94B8 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = EFEB51822DA44A7800CF94B8 /* FirebaseFirestoreCombine-Community */; };
+		EFEB51852DA44A7800CF94B8 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = EFEB51842DA44A7800CF94B8 /* FirebaseFunctions */; };
+		EFEB51872DA44A7800CF94B8 /* FirebaseFunctionsCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = EFEB51862DA44A7800CF94B8 /* FirebaseFunctionsCombine-Community */; };
+		EFEB51892DA44A7800CF94B8 /* FirebaseInAppMessaging-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = EFEB51882DA44A7800CF94B8 /* FirebaseInAppMessaging-Beta */; };
+		EFEB518B2DA44A7800CF94B8 /* FirebaseInstallations in Frameworks */ = {isa = PBXBuildFile; productRef = EFEB518A2DA44A7800CF94B8 /* FirebaseInstallations */; };
+		EFEB518D2DA44A7800CF94B8 /* FirebaseMLModelDownloader in Frameworks */ = {isa = PBXBuildFile; productRef = EFEB518C2DA44A7800CF94B8 /* FirebaseMLModelDownloader */; };
+		EFEB518F2DA44A7800CF94B8 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = EFEB518E2DA44A7800CF94B8 /* FirebaseMessaging */; };
+		EFEB51912DA44A7800CF94B8 /* FirebasePerformance in Frameworks */ = {isa = PBXBuildFile; productRef = EFEB51902DA44A7800CF94B8 /* FirebasePerformance */; };
+		EFEB51932DA44A7800CF94B8 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = EFEB51922DA44A7800CF94B8 /* FirebaseRemoteConfig */; };
+		EFEB51952DA44A7800CF94B8 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = EFEB51942DA44A7800CF94B8 /* FirebaseStorage */; };
+		EFEB51972DA44A7800CF94B8 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = EFEB51962DA44A7800CF94B8 /* FirebaseStorageCombine-Community */; };
+		EFEB51992DA44A7800CF94B8 /* FirebaseVertexAI in Frameworks */ = {isa = PBXBuildFile; productRef = EFEB51982DA44A7800CF94B8 /* FirebaseVertexAI */; };
+		EFF103242DD757E700F23555 /* JobApplicationHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF103232DD757E700F23555 /* JobApplicationHistoryView.swift */; };
+		EFF1FCA52DDB9B0100B57630 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = EFF1FCA42DDB9B0100B57630 /* Localizable.xcstrings */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EF651B772DA3172600C5B8F6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF651B5E2DA3172500C5B8F6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EF651B652DA3172500C5B8F6;
+			remoteInfo = JobSearch;
+		};
+		EF651B812DA3172600C5B8F6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF651B5E2DA3172500C5B8F6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EF651B652DA3172500C5B8F6;
+			remoteInfo = JobSearch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EF0430EE2DAC2AA100D06CF1 /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
+		EF0430F02DAC2AE000D06CF1 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
+		EF0430F22DAC45D000D06CF1 /* LanguageSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionView.swift; sourceTree = "<group>"; };
+		EF0430F52DAC46C000D06CF1 /* String+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
+		EF27799F2DDB52B2002843A3 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		EF3579B52DCCA355006C32CC /* Languages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Languages.json; sourceTree = "<group>"; };
+		EF3579B72DCCA36F006C32CC /* LanguageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewModel.swift; sourceTree = "<group>"; };
+		EF3579B92DCCA3E0006C32CC /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		EF3579BB2DCCA6DD006C32CC /* LanguageEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageEntryView.swift; sourceTree = "<group>"; };
+		EF3814A42DAFD16400C23E15 /* StudyFields.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StudyFields.json; sourceTree = "<group>"; };
+		EF3814A62DAFD1B700C23E15 /* StudyField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyField.swift; sourceTree = "<group>"; };
+		EF3814A82DAFD24200C23E15 /* StudyFieldViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyFieldViewModel.swift; sourceTree = "<group>"; };
+		EF59078B2DB8F6B800182D06 /* CreateJobVacancyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateJobVacancyView.swift; sourceTree = "<group>"; };
+		EF59078D2DB8FA9500182D06 /* JobSeekerMatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSeekerMatchView.swift; sourceTree = "<group>"; };
+		EF6337612DBAA85A00521C53 /* TopsisModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopsisModel.swift; sourceTree = "<group>"; };
+		EF6337642DBAA8FC00521C53 /* TopsisCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopsisCalculator.swift; sourceTree = "<group>"; };
+		EF6337662DBAA94600521C53 /* TopsisRankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopsisRankingView.swift; sourceTree = "<group>"; };
+		EF6337682DBAA9E500521C53 /* CandidateDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateDetailView.swift; sourceTree = "<group>"; };
+		EF63376A2DBAAA3000521C53 /* TopsisRankingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopsisRankingViewModel.swift; sourceTree = "<group>"; };
+		EF651B662DA3172500C5B8F6 /* JobSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JobSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF651B762DA3172600C5B8F6 /* JobSearchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JobSearchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF651B802DA3172600C5B8F6 /* JobSearchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JobSearchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF781BC12DC7CD1D00CBEE18 /* WorkExperienceEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkExperienceEntryView.swift; sourceTree = "<group>"; };
+		EF8359AA2DAE6DBE00A0BD06 /* JobSeekerProfileEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSeekerProfileEditorView.swift; sourceTree = "<group>"; };
+		EF8359AC2DAE6EBC00A0BD06 /* OnboardingSurveyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSurveyView.swift; sourceTree = "<group>"; };
+		EF8359AE2DAE734B00A0BD06 /* JobSeekerHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSeekerHomeView.swift; sourceTree = "<group>"; };
+		EF8359B22DAE76D300A0BD06 /* JobBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobBody.swift; sourceTree = "<group>"; };
+		EF8359B72DAE7F0300A0BD06 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		EF8359B92DAE908600A0BD06 /* CountrySearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountrySearchViewModel.swift; sourceTree = "<group>"; };
+		EF8359BB2DAE90DD00A0BD06 /* CitySearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySearchViewModel.swift; sourceTree = "<group>"; };
+		EF83FA772DCBA35200147062 /* WorkExperience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkExperience.swift; sourceTree = "<group>"; };
+		EF86E6A82DD61C3900FD434D /* CVUploadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVUploadView.swift; sourceTree = "<group>"; };
+		EFA178EB2DB67B0B00A7614B /* JobFields.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = JobFields.json; sourceTree = "<group>"; };
+		EFA178ED2DB67B5400A7614B /* JobField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobField.swift; sourceTree = "<group>"; };
+		EFA178EF2DB67BBA00A7614B /* JobFieldViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobFieldViewModel.swift; sourceTree = "<group>"; };
+		EFA1E83A2DE081C10027E2DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EFCB75D62DA66391003FA8F8 /* JobSeekerRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSeekerRegisterView.swift; sourceTree = "<group>"; };
+		EFCB75D82DA6673E003FA8F8 /* EmployerProfileEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployerProfileEditorView.swift; sourceTree = "<group>"; };
+		EFCB75DA2DA66BC3003FA8F8 /* EmployerHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployerHomeView.swift; sourceTree = "<group>"; };
+		EFEB514F2DA40B1B00CF94B8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EFEB51592DA40C5500CF94B8 /* JobSearchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSearchApp.swift; sourceTree = "<group>"; };
+		EFEB51702DA4266D00CF94B8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EFEB51722DA4275300CF94B8 /* EmployerRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployerRegisterView.swift; sourceTree = "<group>"; };
+		EFF103232DD757E700F23555 /* JobApplicationHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobApplicationHistoryView.swift; sourceTree = "<group>"; };
+		EFF1FCA42DDB9B0100B57630 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EF651B632DA3172500C5B8F6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFEB51832DA44A7800CF94B8 /* FirebaseFirestoreCombine-Community in Frameworks */,
+				EFEB51992DA44A7800CF94B8 /* FirebaseVertexAI in Frameworks */,
+				EFEB51852DA44A7800CF94B8 /* FirebaseFunctions in Frameworks */,
+				EFEB51912DA44A7800CF94B8 /* FirebasePerformance in Frameworks */,
+				EFEB51972DA44A7800CF94B8 /* FirebaseStorageCombine-Community in Frameworks */,
+				EFEB51932DA44A7800CF94B8 /* FirebaseRemoteConfig in Frameworks */,
+				EFEB517D2DA44A7800CF94B8 /* FirebaseDatabase in Frameworks */,
+				EFEB517F2DA44A7800CF94B8 /* FirebaseDynamicLinks in Frameworks */,
+				EFEB516D2DA4252700CF94B8 /* FirebaseAppCheck in Frameworks */,
+				EFEB51752DA44A7800CF94B8 /* FirebaseAuth in Frameworks */,
+				EFEB51672DA4252700CF94B8 /* FirebaseAnalytics in Frameworks */,
+				EFEB51812DA44A7800CF94B8 /* FirebaseFirestore in Frameworks */,
+				EFEB518F2DA44A7800CF94B8 /* FirebaseMessaging in Frameworks */,
+				EFEB518B2DA44A7800CF94B8 /* FirebaseInstallations in Frameworks */,
+				EFEB51872DA44A7800CF94B8 /* FirebaseFunctionsCombine-Community in Frameworks */,
+				EFEB516F2DA4252700CF94B8 /* FirebaseAppDistribution-Beta in Frameworks */,
+				EFEB516B2DA4252700CF94B8 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				EFEB51892DA44A7800CF94B8 /* FirebaseInAppMessaging-Beta in Frameworks */,
+				EFEB51772DA44A7800CF94B8 /* FirebaseAuthCombine-Community in Frameworks */,
+				EFEB517B2DA44A7800CF94B8 /* FirebaseCrashlytics in Frameworks */,
+				EFEB518D2DA44A7800CF94B8 /* FirebaseMLModelDownloader in Frameworks */,
+				EFEB51952DA44A7800CF94B8 /* FirebaseStorage in Frameworks */,
+				EFEB51792DA44A7800CF94B8 /* FirebaseCore in Frameworks */,
+				EFEB51692DA4252700CF94B8 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF651B732DA3172600C5B8F6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF651B7D2DA3172600C5B8F6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EF0430F42DAC469500D06CF1 /* language */ = {
+			isa = PBXGroup;
+			children = (
+				EFF1FCA42DDB9B0100B57630 /* Localizable.xcstrings */,
+				EF0430EE2DAC2AA100D06CF1 /* LanguageManager.swift */,
+				EF0430F02DAC2AE000D06CF1 /* Bundle+Extension.swift */,
+				EF0430F52DAC46C000D06CF1 /* String+Localized.swift */,
+			);
+			path = language;
+			sourceTree = "<group>";
+		};
+		EF3814A32DAFD08E00C23E15 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				EF3579B52DCCA355006C32CC /* Languages.json */,
+				EFA178EB2DB67B0B00A7614B /* JobFields.json */,
+				EF3814A42DAFD16400C23E15 /* StudyFields.json */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		EF6337632DBAA8E200521C53 /* TOPSIS */ = {
+			isa = PBXGroup;
+			children = (
+				EF6337612DBAA85A00521C53 /* TopsisModel.swift */,
+				EF6337642DBAA8FC00521C53 /* TopsisCalculator.swift */,
+				EF6337662DBAA94600521C53 /* TopsisRankingView.swift */,
+				EF63376A2DBAAA3000521C53 /* TopsisRankingViewModel.swift */,
+			);
+			path = TOPSIS;
+			sourceTree = "<group>";
+		};
+		EF651B5D2DA3172500C5B8F6 = {
+			isa = PBXGroup;
+			children = (
+				EFA1E83A2DE081C10027E2DB /* Assets.xcassets */,
+				EF6337632DBAA8E200521C53 /* TOPSIS */,
+				EF3814A32DAFD08E00C23E15 /* JSON */,
+				EF8359B42DAE76E200A0BD06 /* Models */,
+				EF0430F42DAC469500D06CF1 /* language */,
+				EFEB51592DA40C5500CF94B8 /* JobSearchApp.swift */,
+				EFEB515B2DA40C6400CF94B8 /* ViewModels */,
+				EFEB515E2DA40C7F00CF94B8 /* Views */,
+				EFEB51702DA4266D00CF94B8 /* GoogleService-Info.plist */,
+				EF651B672DA3172500C5B8F6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EF651B672DA3172500C5B8F6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EF651B662DA3172500C5B8F6 /* JobSearch.app */,
+				EF651B762DA3172600C5B8F6 /* JobSearchTests.xctest */,
+				EF651B802DA3172600C5B8F6 /* JobSearchUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EF8359B42DAE76E200A0BD06 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EF8359B22DAE76D300A0BD06 /* JobBody.swift */,
+				EF3814A62DAFD1B700C23E15 /* StudyField.swift */,
+				EFA178ED2DB67B5400A7614B /* JobField.swift */,
+				EF83FA772DCBA35200147062 /* WorkExperience.swift */,
+				EF3579B92DCCA3E0006C32CC /* Language.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EFEB515B2DA40C6400CF94B8 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				EF8359B92DAE908600A0BD06 /* CountrySearchViewModel.swift */,
+				EF8359BB2DAE90DD00A0BD06 /* CitySearchViewModel.swift */,
+				EF3814A82DAFD24200C23E15 /* StudyFieldViewModel.swift */,
+				EFA178EF2DB67BBA00A7614B /* JobFieldViewModel.swift */,
+				EF3579B72DCCA36F006C32CC /* LanguageViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		EFEB515E2DA40C7F00CF94B8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EFEB514F2DA40B1B00CF94B8 /* ContentView.swift */,
+				EFEB51722DA4275300CF94B8 /* EmployerRegisterView.swift */,
+				EFCB75D62DA66391003FA8F8 /* JobSeekerRegisterView.swift */,
+				EFCB75D82DA6673E003FA8F8 /* EmployerProfileEditorView.swift */,
+				EFCB75DA2DA66BC3003FA8F8 /* EmployerHomeView.swift */,
+				EF0430F22DAC45D000D06CF1 /* LanguageSelectionView.swift */,
+				EF8359AA2DAE6DBE00A0BD06 /* JobSeekerProfileEditorView.swift */,
+				EF8359AC2DAE6EBC00A0BD06 /* OnboardingSurveyView.swift */,
+				EF8359AE2DAE734B00A0BD06 /* JobSeekerHomeView.swift */,
+				EF8359B72DAE7F0300A0BD06 /* LoginView.swift */,
+				EF59078B2DB8F6B800182D06 /* CreateJobVacancyView.swift */,
+				EF59078D2DB8FA9500182D06 /* JobSeekerMatchView.swift */,
+				EF6337682DBAA9E500521C53 /* CandidateDetailView.swift */,
+				EF781BC12DC7CD1D00CBEE18 /* WorkExperienceEntryView.swift */,
+				EF3579BB2DCCA6DD006C32CC /* LanguageEntryView.swift */,
+				EF86E6A82DD61C3900FD434D /* CVUploadView.swift */,
+				EFF103232DD757E700F23555 /* JobApplicationHistoryView.swift */,
+				EF27799F2DDB52B2002843A3 /* AuthService.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EF651B652DA3172500C5B8F6 /* JobSearch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF651B8A2DA3172600C5B8F6 /* Build configuration list for PBXNativeTarget "JobSearch" */;
+			buildPhases = (
+				EF651B622DA3172500C5B8F6 /* Sources */,
+				EF651B632DA3172500C5B8F6 /* Frameworks */,
+				EF651B642DA3172500C5B8F6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JobSearch;
+			packageProductDependencies = (
+				EFEB51662DA4252700CF94B8 /* FirebaseAnalytics */,
+				EFEB51682DA4252700CF94B8 /* FirebaseAnalyticsOnDeviceConversion */,
+				EFEB516A2DA4252700CF94B8 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				EFEB516C2DA4252700CF94B8 /* FirebaseAppCheck */,
+				EFEB516E2DA4252700CF94B8 /* FirebaseAppDistribution-Beta */,
+				EFEB51742DA44A7800CF94B8 /* FirebaseAuth */,
+				EFEB51762DA44A7800CF94B8 /* FirebaseAuthCombine-Community */,
+				EFEB51782DA44A7800CF94B8 /* FirebaseCore */,
+				EFEB517A2DA44A7800CF94B8 /* FirebaseCrashlytics */,
+				EFEB517C2DA44A7800CF94B8 /* FirebaseDatabase */,
+				EFEB517E2DA44A7800CF94B8 /* FirebaseDynamicLinks */,
+				EFEB51802DA44A7800CF94B8 /* FirebaseFirestore */,
+				EFEB51822DA44A7800CF94B8 /* FirebaseFirestoreCombine-Community */,
+				EFEB51842DA44A7800CF94B8 /* FirebaseFunctions */,
+				EFEB51862DA44A7800CF94B8 /* FirebaseFunctionsCombine-Community */,
+				EFEB51882DA44A7800CF94B8 /* FirebaseInAppMessaging-Beta */,
+				EFEB518A2DA44A7800CF94B8 /* FirebaseInstallations */,
+				EFEB518C2DA44A7800CF94B8 /* FirebaseMLModelDownloader */,
+				EFEB518E2DA44A7800CF94B8 /* FirebaseMessaging */,
+				EFEB51902DA44A7800CF94B8 /* FirebasePerformance */,
+				EFEB51922DA44A7800CF94B8 /* FirebaseRemoteConfig */,
+				EFEB51942DA44A7800CF94B8 /* FirebaseStorage */,
+				EFEB51962DA44A7800CF94B8 /* FirebaseStorageCombine-Community */,
+				EFEB51982DA44A7800CF94B8 /* FirebaseVertexAI */,
+			);
+			productName = JobSearch;
+			productReference = EF651B662DA3172500C5B8F6 /* JobSearch.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EF651B752DA3172600C5B8F6 /* JobSearchTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF651B8D2DA3172600C5B8F6 /* Build configuration list for PBXNativeTarget "JobSearchTests" */;
+			buildPhases = (
+				EF651B722DA3172600C5B8F6 /* Sources */,
+				EF651B732DA3172600C5B8F6 /* Frameworks */,
+				EF651B742DA3172600C5B8F6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EF651B782DA3172600C5B8F6 /* PBXTargetDependency */,
+			);
+			name = JobSearchTests;
+			productName = JobSearchTests;
+			productReference = EF651B762DA3172600C5B8F6 /* JobSearchTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EF651B7F2DA3172600C5B8F6 /* JobSearchUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF651B902DA3172600C5B8F6 /* Build configuration list for PBXNativeTarget "JobSearchUITests" */;
+			buildPhases = (
+				EF651B7C2DA3172600C5B8F6 /* Sources */,
+				EF651B7D2DA3172600C5B8F6 /* Frameworks */,
+				EF651B7E2DA3172600C5B8F6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EF651B822DA3172600C5B8F6 /* PBXTargetDependency */,
+			);
+			name = JobSearchUITests;
+			productName = JobSearchUITests;
+			productReference = EF651B802DA3172600C5B8F6 /* JobSearchUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EF651B5E2DA3172500C5B8F6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					EF651B652DA3172500C5B8F6 = {
+						CreatedOnToolsVersion = 15.0.1;
+						LastSwiftMigration = 1500;
+					};
+					EF651B752DA3172600C5B8F6 = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = EF651B652DA3172500C5B8F6;
+					};
+					EF651B7F2DA3172600C5B8F6 = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = EF651B652DA3172500C5B8F6;
+					};
+				};
+			};
+			buildConfigurationList = EF651B612DA3172500C5B8F6 /* Build configuration list for PBXProject "JobSearch" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				uk,
+			);
+			mainGroup = EF651B5D2DA3172500C5B8F6;
+			packageReferences = (
+				EFEB51652DA4252700CF94B8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
+			productRefGroup = EF651B672DA3172500C5B8F6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EF651B652DA3172500C5B8F6 /* JobSearch */,
+				EF651B752DA3172600C5B8F6 /* JobSearchTests */,
+				EF651B7F2DA3172600C5B8F6 /* JobSearchUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EF651B642DA3172500C5B8F6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFA178EC2DB67B0B00A7614B /* JobFields.json in Resources */,
+				EFF1FCA52DDB9B0100B57630 /* Localizable.xcstrings in Resources */,
+				EF3579B62DCCA355006C32CC /* Languages.json in Resources */,
+				EFEB51712DA4266D00CF94B8 /* GoogleService-Info.plist in Resources */,
+				EFA1E83B2DE081C10027E2DB /* Assets.xcassets in Resources */,
+				EF3814A52DAFD16400C23E15 /* StudyFields.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF651B742DA3172600C5B8F6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF651B7E2DA3172600C5B8F6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EF651B622DA3172500C5B8F6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFEB51732DA4275300CF94B8 /* EmployerRegisterView.swift in Sources */,
+				EFA178EE2DB67B5400A7614B /* JobField.swift in Sources */,
+				EF3579B82DCCA36F006C32CC /* LanguageViewModel.swift in Sources */,
+				EF2779A02DDB52B2002843A3 /* AuthService.swift in Sources */,
+				EF83FA782DCBA35200147062 /* WorkExperience.swift in Sources */,
+				EF6337622DBAA85A00521C53 /* TopsisModel.swift in Sources */,
+				EF8359B32DAE76D400A0BD06 /* JobBody.swift in Sources */,
+				EFCB75D72DA66391003FA8F8 /* JobSeekerRegisterView.swift in Sources */,
+				EF8359BC2DAE90DD00A0BD06 /* CitySearchViewModel.swift in Sources */,
+				EF59078E2DB8FA9500182D06 /* JobSeekerMatchView.swift in Sources */,
+				EFA178F02DB67BBA00A7614B /* JobFieldViewModel.swift in Sources */,
+				EF0430F32DAC45D000D06CF1 /* LanguageSelectionView.swift in Sources */,
+				EF59078C2DB8F6B800182D06 /* CreateJobVacancyView.swift in Sources */,
+				EF0430F62DAC46C000D06CF1 /* String+Localized.swift in Sources */,
+				EF781BC22DC7CD1D00CBEE18 /* WorkExperienceEntryView.swift in Sources */,
+				EF0430F12DAC2AE000D06CF1 /* Bundle+Extension.swift in Sources */,
+				EF63376B2DBAAA3000521C53 /* TopsisRankingViewModel.swift in Sources */,
+				EF3814A72DAFD1B700C23E15 /* StudyField.swift in Sources */,
+				EFEB51502DA40B1B00CF94B8 /* ContentView.swift in Sources */,
+				EF8359AF2DAE734B00A0BD06 /* JobSeekerHomeView.swift in Sources */,
+				EFF103242DD757E700F23555 /* JobApplicationHistoryView.swift in Sources */,
+				EF8359AB2DAE6DBE00A0BD06 /* JobSeekerProfileEditorView.swift in Sources */,
+				EF3814A92DAFD24200C23E15 /* StudyFieldViewModel.swift in Sources */,
+				EF3579BA2DCCA3E0006C32CC /* Language.swift in Sources */,
+				EFCB75D92DA6673E003FA8F8 /* EmployerProfileEditorView.swift in Sources */,
+				EF8359BA2DAE908600A0BD06 /* CountrySearchViewModel.swift in Sources */,
+				EF8359B82DAE7F0300A0BD06 /* LoginView.swift in Sources */,
+				EF8359AD2DAE6EBC00A0BD06 /* OnboardingSurveyView.swift in Sources */,
+				EF6337652DBAA8FC00521C53 /* TopsisCalculator.swift in Sources */,
+				EFEB515A2DA40C5500CF94B8 /* JobSearchApp.swift in Sources */,
+				EF3579BC2DCCA6DD006C32CC /* LanguageEntryView.swift in Sources */,
+				EFCB75DB2DA66BC3003FA8F8 /* EmployerHomeView.swift in Sources */,
+				EF6337672DBAA94600521C53 /* TopsisRankingView.swift in Sources */,
+				EF0430EF2DAC2AA100D06CF1 /* LanguageManager.swift in Sources */,
+				EF86E6A92DD61C3900FD434D /* CVUploadView.swift in Sources */,
+				EF6337692DBAA9E500521C53 /* CandidateDetailView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF651B722DA3172600C5B8F6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF651B7C2DA3172600C5B8F6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EF651B782DA3172600C5B8F6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EF651B652DA3172500C5B8F6 /* JobSearch */;
+			targetProxy = EF651B772DA3172600C5B8F6 /* PBXContainerItemProxy */;
+		};
+		EF651B822DA3172600C5B8F6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EF651B652DA3172500C5B8F6 /* JobSearch */;
+			targetProxy = EF651B812DA3172600C5B8F6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		EF651B882DA3172600C5B8F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EF651B892DA3172600C5B8F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EF651B8B2DA3172600C5B8F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = JobSearchApp.swift;
+				DEVELOPMENT_TEAM = SH7K74NDU7;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = olya.JobSearch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EF651B8C2DA3172600C5B8F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = JobSearchApp.swift;
+				DEVELOPMENT_TEAM = SH7K74NDU7;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = olya.JobSearch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EF651B8E2DA3172600C5B8F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SH7K74NDU7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = olya.JobSearchTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JobSearch.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/JobSearch";
+			};
+			name = Debug;
+		};
+		EF651B8F2DA3172600C5B8F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SH7K74NDU7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = olya.JobSearchTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JobSearch.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/JobSearch";
+			};
+			name = Release;
+		};
+		EF651B912DA3172600C5B8F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SH7K74NDU7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = olya.JobSearchUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = JobSearch;
+			};
+			name = Debug;
+		};
+		EF651B922DA3172600C5B8F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SH7K74NDU7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = olya.JobSearchUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = JobSearch;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EF651B612DA3172500C5B8F6 /* Build configuration list for PBXProject "JobSearch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF651B882DA3172600C5B8F6 /* Debug */,
+				EF651B892DA3172600C5B8F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EF651B8A2DA3172600C5B8F6 /* Build configuration list for PBXNativeTarget "JobSearch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF651B8B2DA3172600C5B8F6 /* Debug */,
+				EF651B8C2DA3172600C5B8F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EF651B8D2DA3172600C5B8F6 /* Build configuration list for PBXNativeTarget "JobSearchTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF651B8E2DA3172600C5B8F6 /* Debug */,
+				EF651B8F2DA3172600C5B8F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EF651B902DA3172600C5B8F6 /* Build configuration list for PBXNativeTarget "JobSearchUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF651B912DA3172600C5B8F6 /* Debug */,
+				EF651B922DA3172600C5B8F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EFEB51652DA4252700CF94B8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.11.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EFEB51662DA4252700CF94B8 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFEB51652DA4252700CF94B8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		EFEB51682DA4252700CF94B8 /* FirebaseAnalyticsOnDeviceConversion */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFEB51652DA4252700CF94B8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsOnDeviceConversion;
+		};
+		EFEB516A2DA4252700CF94B8 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFEB51652DA4252700CF94B8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		EFEB516C2DA4252700CF94B8 /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFEB51652DA4252700CF94B8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
+		};
+		EFEB516E2DA4252700CF94B8 /* FirebaseAppDistribution-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFEB51652DA4252700CF94B8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseAppDistribution-Beta";
+		};
+		EFEB51742DA44A7800CF94B8 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFEB51652DA4252700CF94B8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		EFEB51762DA44A7800CF94B8 /* FirebaseAuthCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFEB51652DA4252700CF94B8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseAuthCombine-Community";
+		};
+		EFEB51782DA44A7800CF94B8 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFEB51652DA4252700CF94B8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		EFEB517A2DA44A7800CF94B8 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFEB51652DA4252700CF94B8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		EFEB517C2DA44A7800CF94B8 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFEB51652DA4252700CF94B8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		EFEB517E2DA44A7800CF94B8 /* FirebaseDynamicLinks */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFEB51652DA4252700CF94B8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDynamicLinks;
+		};
+		EFEB51802DA44A7800CF94B8 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFEB51652DA4252700CF94B8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		EFEB51822DA44A7800CF94B8 /* FirebaseFirestoreCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFEB51652DA4252700CF94B8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFirestoreCombine-Community";
+		};
+		EFEB51842DA44A7800CF94B8 /* FirebaseFunctions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFEB51652DA4252700CF94B8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFunctions;
+		};
+		EFEB51862DA44A7800CF94B8 /* FirebaseFunctionsCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFEB51652DA4252700CF94B8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFunctionsCombine-Community";
+		};
+		EFEB51882DA44A7800CF94B8 /* FirebaseInAppMessaging-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFEB51652DA4252700CF94B8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseInAppMessaging-Beta";
+		};
+		EFEB518A2DA44A7800CF94B8 /* FirebaseInstallations */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFEB51652DA4252700CF94B8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseInstallations;
+		};
+		EFEB518C2DA44A7800CF94B8 /* FirebaseMLModelDownloader */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFEB51652DA4252700CF94B8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMLModelDownloader;
+		};
+		EFEB518E2DA44A7800CF94B8 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFEB51652DA4252700CF94B8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		EFEB51902DA44A7800CF94B8 /* FirebasePerformance */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFEB51652DA4252700CF94B8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebasePerformance;
+		};
+		EFEB51922DA44A7800CF94B8 /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFEB51652DA4252700CF94B8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
+		};
+		EFEB51942DA44A7800CF94B8 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFEB51652DA4252700CF94B8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		EFEB51962DA44A7800CF94B8 /* FirebaseStorageCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFEB51652DA4252700CF94B8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseStorageCombine-Community";
+		};
+		EFEB51982DA44A7800CF94B8 /* FirebaseVertexAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFEB51652DA4252700CF94B8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseVertexAI;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = EF651B5E2DA3172500C5B8F6 /* Project object */;
+}
