@@ -26,7 +26,6 @@ struct JobSeekerProfileEditorView: View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 20) {
-                    // Profile photo
                     if isLoading {
                         ProgressView()
                             .frame(width: 120, height: 120)
@@ -102,7 +101,7 @@ struct JobSeekerProfileEditorView: View {
             }
             .navigationTitle("Profile editor".localized())
             .navigationDestination(isPresented: $navigateToHome) {
-                JobSeekerHomeView() // next step
+                JobSeekerHomeView() 
             }
             .onAppear {
                 editablePhoneNumber = phoneNumber
@@ -140,7 +139,7 @@ struct JobSeekerProfileEditorView: View {
             editableBio = data["bio"] as? String ?? ""
                         
             
-            // Load profile photo if exists
+            
             if let photoURLString = data["photoURL"] as? String {
                 photoURL = photoURLString
                 loadImageFromURL(photoURLString)
@@ -186,7 +185,7 @@ struct JobSeekerProfileEditorView: View {
                 "lastUpdated": FieldValue.serverTimestamp()
             ]
         
-        // If we have a new image to upload
+       
         if imageWasChanged, let image = profileImage,
            let imageData = image.jpegData(compressionQuality: 0.8) {
             let ref = Storage.storage().reference().child("user_pfp/\(uid).jpg")
@@ -206,11 +205,11 @@ struct JobSeekerProfileEditorView: View {
                             }
                         }
         } else if let photoURL = photoURL {
-            // Keep existing photo
+            
             userData["photoURL"] = photoURL
             self.updateProfileData(db: db, uid: uid, userData: userData)
         } else {
-            // No photo
+          
             self.updateProfileData(db: db, uid: uid, userData: userData)
         }
     }
