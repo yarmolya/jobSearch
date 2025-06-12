@@ -272,9 +272,9 @@ class TopsisCalculator {
             let candidateData = originalData[absoluteScores.count]
             let hasDriverLicense = candidateData["hasDriverLicense"] as? Bool ?? false
             if requiresDriverLicense && !hasDriverLicense {
-                score *= 0.5 // Reduce score by 50% if license is required but not present
+                score *= 0.5 
             } else if requiresDriverLicense && hasDriverLicense {
-                score = min(score * 1.2, 1.0) // Small boost if license is required and present
+                score = min(score * 1.2, 1.0) 
             }
             
             absoluteScores.append(score)
