@@ -6,9 +6,9 @@ struct ContentView: View {
             VStack {
                 Spacer()
                 
-                // Centered content
+               
                 VStack(spacing: 24) {
-                    // Header
+                   
                     VStack(spacing: 8) {
                         Text("welcome".localized())
                             .font(.system(.largeTitle, design: .rounded))
@@ -16,7 +16,7 @@ struct ContentView: View {
                             .foregroundColor(.primary)
                     }
                     
-                    // Role selection buttons
+                    
                     VStack(spacing: 16) {
                         NavigationLink(destination: JobSeekerRegisterView()) {
                             HStack {
@@ -46,7 +46,7 @@ struct ContentView: View {
     }
 }
 
-// Button Style Extension
+
 extension View {
     func roleSelectionButtonStyle(backgroundColor: Color) -> some View {
         self
