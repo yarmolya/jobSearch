@@ -17,9 +17,9 @@ struct LoginView: View {
             VStack {
                 Spacer()
                 
-                // Centered content
+               
                 VStack(spacing: 24) {
-                    // Header
+                   
                     VStack(spacing: 8) {
                         Text("Log in to your account".localized())
                             .font(.system(.largeTitle, design: .rounded))
@@ -31,7 +31,7 @@ struct LoginView: View {
                             .foregroundColor(.secondary)
                     }
                     
-                    // Form fields
+                   
                     VStack(spacing: 16) {
                         CustomTextField(
                             title: "email".localized(),
@@ -58,7 +58,7 @@ struct LoginView: View {
                     }
                     .padding(.vertical, 8)
                     
-                    // Login button
+                    
                     Button(action: loginUser) {
                         if isLoading {
                             ProgressView()
@@ -78,7 +78,7 @@ struct LoginView: View {
                 
                 Spacer()
                 
-                // Sign up link
+                
                 NavigationLink {
                     ContentView()
                 } label: {
@@ -149,7 +149,7 @@ struct LoginView: View {
     }
 }
 
-// MARK: - Custom Components
+
 
 struct CustomTextField: View {
     let title: String
