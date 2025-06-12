@@ -10,7 +10,7 @@ struct Language: Identifiable, Codable, Hashable {
         }
 }
 
-// Proficiency levels
+
 enum ProficiencyLevel: String, Codable, CaseIterable, Identifiable {
     case motherTongue = "Mother Tongue"
     case a1 = "A1"
@@ -29,7 +29,7 @@ enum ProficiencyLevel: String, Codable, CaseIterable, Identifiable {
         }
     }
     
-    // Numeric value for sorting
+
     var sortOrder: Int {
         switch self {
         case .motherTongue: return 7
@@ -43,7 +43,7 @@ enum ProficiencyLevel: String, Codable, CaseIterable, Identifiable {
     }
 }
 
-// User's language with proficiency
+
 struct UserLanguage: Identifiable, Codable, Hashable {
     var id: String
     var language: Language
