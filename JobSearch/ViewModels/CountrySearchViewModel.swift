@@ -3,7 +3,7 @@ import Combine
 
 class CountrySearchViewModel: ObservableObject {
     @Published var query = ""
-    @Published var predictions: [Prediction] = []  // Changed from String to Prediction type
+    @Published var predictions: [Prediction] = []  
     
     private var cancellables = Set<AnyCancellable>()
     private let sessionToken = UUID().uuidString
@@ -14,7 +14,7 @@ class CountrySearchViewModel: ObservableObject {
     }
     
     var suggestions: [String] {
-        predictions.map { $0.description }  // Convert predictions to string descriptions
+        predictions.map { $0.description }  
     }
     
     init() {
@@ -54,7 +54,7 @@ class CountrySearchViewModel: ObservableObject {
 }
 
 
-// Оновлені назви структур
+
 struct GooglePlacesResponseUnique: Decodable {
     let predictions: [PredictionUnique]
 }
