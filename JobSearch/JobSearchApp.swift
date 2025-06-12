@@ -4,7 +4,7 @@ import FirebaseCore
 @main
 struct JobSearchApp: App {
     
-    // Ініціалізація Firebase
+    
     init() {
         FirebaseApp.configure()
     }
