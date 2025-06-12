@@ -17,9 +17,9 @@ struct JobSeekerRegisterView: View {
             VStack {
                 Spacer()
                 
-                // Centered content
+                
                 VStack(spacing: 24) {
-                    // Header
+                    
                     VStack(spacing: 8) {
                         Text("Create your account".localized())
                             .font(.system(.largeTitle, design: .rounded))
@@ -31,7 +31,7 @@ struct JobSeekerRegisterView: View {
                             .foregroundColor(.secondary)
                     }
                     
-                    // Form fields
+                    
                     VStack(spacing: 16) {
                         RegisterTextField(
                             title: "name".localized(),
@@ -70,7 +70,7 @@ struct JobSeekerRegisterView: View {
                     }
                     .padding(.vertical, 8)
                     
-                    // Sign up button
+                   
                     Button(action: registerJobSeeker) {
                         if isLoading {
                             ProgressView()
@@ -106,7 +106,7 @@ struct JobSeekerRegisterView: View {
         errorMessage = ""
         isLoading = true
         
-        // Validate required fields
+        
         guard !name.trimmingCharacters(in: .whitespaces).isEmpty else {
             errorMessage = "First name is required.".localized()
             isLoading = false
@@ -167,7 +167,7 @@ struct JobSeekerRegisterView: View {
     
     }
 
-// Unique component names for this view to avoid redeclaration
+
 struct RegisterTextField: View {
     let title: String
     @Binding var text: String
