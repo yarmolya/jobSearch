@@ -36,9 +36,9 @@ struct CandidateDetailView: View {
             NavigationStack {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 20) {
-                        // Header with candidate info
+                       
                         VStack(alignment: .center, spacing: 10) {
-                            // Profile Picture
+                       
                             if let profileImageURL = profileImageURL {
                                 AsyncImage(url: profileImageURL) { image in
                                     image
@@ -97,7 +97,7 @@ struct CandidateDetailView: View {
                                 .padding(.top, 5)
                             }
                             
-                            // CV Button if available
+                            
                             if let cvURL = cvURL {
                                 Button(action: {
                                     self.showingCVPreview = true
@@ -129,7 +129,7 @@ struct CandidateDetailView: View {
                                 }
                             }
                             
-                            // Match score
+                           
                             ZStack {
                                 Circle()
                                     .stroke(Color.gray.opacity(0.2), lineWidth: 8)
@@ -158,7 +158,7 @@ struct CandidateDetailView: View {
                         .background(Color(.systemGray6))
                         .cornerRadius(12)
                         
-                        // Score breakdown
+                        
                         VStack(alignment: .leading, spacing: 15) {
                             Text("Score Breakdown".localized())
                                 .font(.headline)
@@ -174,7 +174,7 @@ struct CandidateDetailView: View {
                         .background(Color(.systemGray6))
                         .cornerRadius(12)
                         
-                        // Contact Information Block
+                       
                         VStack(alignment: .leading, spacing: 12) {
                             Text("Contact Information".localized())
                                 .font(.headline)
@@ -229,7 +229,7 @@ struct CandidateDetailView: View {
     
     private func fetchProfilePicture() {
         let storageRef = Storage.storage().reference()
-        // Changed from profile_pictures to user_pfp to match security rules
+      
         let profilePictureRef = storageRef.child("user_pfp/\(candidate.id).jpg")
         
         profilePictureRef.downloadURL { url, error in
@@ -260,7 +260,7 @@ struct CandidateDetailView: View {
                         }
                     }
                 } else {
-                    // Fallback to the stored URL if available
+                  
                     self.cvURL = document.data()?["resumeURL"] as? String
                 }
             }
@@ -327,7 +327,7 @@ struct CandidateDetailView: View {
 
 }
 
-// WebView for displaying PDF CV
+
 struct WebView: UIViewRepresentable {
     let url: URL
     
