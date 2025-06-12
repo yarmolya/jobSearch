@@ -78,7 +78,7 @@ struct CVUploadView: View {
         }
     }
     
-    // MARK: - View Components
+
     
     var headerSection: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -271,7 +271,7 @@ struct CVUploadView: View {
         }
     }
     
-    // MARK: - Helper Methods
+
     
     func fileTypeIcon(for url: URL) -> Image {
         let fileExtension = url.pathExtension.lowercased()
@@ -308,10 +308,10 @@ struct CVUploadView: View {
     func getFileNameFromURL(_ urlString: String) -> String? {
         guard let url = URL(string: urlString) else { return nil }
         
-        // Try to extract filename from URL path
+        
         let filename = url.lastPathComponent
         
-        // Check if there's a query that might contain the original filename
+       
         if let urlComponents = URLComponents(string: urlString),
            let queryItems = urlComponents.queryItems {
             for item in queryItems {
@@ -324,7 +324,7 @@ struct CVUploadView: View {
         return filename
     }
     
-    // MARK: - Backend Logic
+  
     
     func fetchCurrentCV() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
@@ -350,7 +350,7 @@ struct CVUploadView: View {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
         isUploading = true
-        uploadProgress = 0.01 // Start with non-zero progress for UI feedback
+        uploadProgress = 0.01 
         
         let fileExtension = fileURL.pathExtension.lowercased()
         let storageRef = Storage.storage().reference().child("resumes/\(uid)_\(UUID().uuidString).\(fileExtension)")
@@ -369,13 +369,13 @@ struct CVUploadView: View {
         
         let uploadTask = storageRef.putFile(from: fileURL, metadata: metadata)
         
-        // Monitor progress
+        
         uploadTask.observe(.progress) { snapshot in
             let percentComplete = Double(snapshot.progress!.completedUnitCount) / Double(snapshot.progress!.totalUnitCount)
             self.uploadProgress = percentComplete
         }
         
-        // Handle completion
+        
         uploadTask.observe(.success) { snapshot in
             storageRef.downloadURL { url, error in
                 if let error = error {
@@ -394,7 +394,7 @@ struct CVUploadView: View {
                     return
                 }
                 
-                // Update Firestore with the new CV URL
+               
                 let db = Firestore.firestore()
                 db.collection("job_seekers").document(uid).updateData([
                     "resumeURL": downloadURL.absoluteString,
@@ -429,7 +429,7 @@ struct CVUploadView: View {
     }
 }
 
-// MARK: - Document Picker
+
 
 struct DocumentPicker: UIViewControllerRepresentable {
     @Binding var fileURL: URL?
@@ -459,20 +459,20 @@ struct DocumentPicker: UIViewControllerRepresentable {
         func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
             guard let url = urls.first else { return }
             
-            // Create a local copy in the app's temporary directory
+            
             let temporaryDirectoryURL = FileManager.default.temporaryDirectory
             let destinationURL = temporaryDirectoryURL.appendingPathComponent(url.lastPathComponent)
             
             do {
-                // Remove any existing file at the destination
+             
                 if FileManager.default.fileExists(atPath: destinationURL.path) {
                     try FileManager.default.removeItem(at: destinationURL)
                 }
                 
-                // Copy the file to the temporary directory
+               
                 try FileManager.default.copyItem(at: url, to: destinationURL)
                 
-                // Start accessing the security-scoped resource
+               
                 let didStartAccessing = url.startAccessingSecurityScopedResource()
                 defer {
                     if didStartAccessing {
@@ -480,7 +480,7 @@ struct DocumentPicker: UIViewControllerRepresentable {
                     }
                 }
                 
-                // Update parent bindings
+               
                 parent.fileURL = destinationURL
                 parent.fileName = url.lastPathComponent
             } catch {
@@ -490,8 +490,8 @@ struct DocumentPicker: UIViewControllerRepresentable {
     }
 }
 
-// MARK: - QuickLook Preview
-// This is a separate component that doesn't affect the main state
+
+
 struct QuickLookPreview: UIViewControllerRepresentable {
     let url: URL
     
