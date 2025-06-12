@@ -25,14 +25,14 @@ struct TopsisCandidate: Identifiable, Comparable, Hashable {
     
     static func < (lhs: TopsisCandidate, rhs: TopsisCandidate) -> Bool {
         if lhs.topsisScore == rhs.topsisScore {
-            return lhs.appliedDate > rhs.appliedDate // Earlier dates come first
+            return lhs.appliedDate > rhs.appliedDate 
         }
         return lhs.topsisScore < rhs.topsisScore
     }
     
     static func > (lhs: TopsisCandidate, rhs: TopsisCandidate) -> Bool {
         if lhs.topsisScore == rhs.topsisScore {
-            return lhs.appliedDate < rhs.appliedDate // Earlier dates come first
+            return lhs.appliedDate < rhs.appliedDate 
         }
         return lhs.topsisScore > rhs.topsisScore
     }
