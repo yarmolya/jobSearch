@@ -19,7 +19,7 @@ class CitySearchViewModel: ObservableObject {
         predictions.map { $0.description }
     }
     
-    // Add a method to clear predictions which will in turn clear suggestions
+
     func clearSuggestions() {
         predictions = []
     }
