@@ -15,7 +15,7 @@ struct WorkExperience: Identifiable {
     let isCurrentJob: Bool
     let description: String
     
-    // Computed property to calculate duration in years
+   
     var duration: Double {
         let end = endDate ?? Date()
         let calendar = Calendar.current
@@ -33,7 +33,7 @@ struct WorkExperience: Identifiable {
     }
 
     
-    // Optional initializer with default id
+ 
     init(id: String = UUID().uuidString, position: String, company: String, field: String, specialization: String, startDate: Date, endDate: Date? = nil, isCurrentJob: Bool, description: String) {
         self.id = id
         self.position = position
@@ -48,20 +48,20 @@ struct WorkExperience: Identifiable {
 }
 
 
-// New model to track selected job fields within a category
+
 struct SelectedJobCategory: Identifiable {
     let id = UUID()
     let category: JobCategory
     var selectedFields: Set<JobCategory.Field>
     
-    // Convenience initialization
+
     init(category: JobCategory, selectedFields: Set<JobCategory.Field> = []) {
         self.category = category
         self.selectedFields = selectedFields
     }
 }
 
-// Update your parseWorkExperience function to handle more cases
+
 func parseWorkExperience(from dictArray: [[String: Any]]) -> [WorkExperience] {
     print("Parsing \(dictArray.count) work experience entries")
     
@@ -69,8 +69,7 @@ func parseWorkExperience(from dictArray: [[String: Any]]) -> [WorkExperience] {
     
     for dict in dictArray {
         print("Parsing dict: \(dict)")
-        
-        // Extract fields
+    
         let id = dict["id"] as? String ?? UUID().uuidString
         let position = dict["position"] as? String ?? "Unknown Position"
         let company = dict["company"] as? String ?? "Unknown Company"
@@ -79,11 +78,11 @@ func parseWorkExperience(from dictArray: [[String: Any]]) -> [WorkExperience] {
         let description = dict["description"] as? String ?? ""
         let isCurrentJob = dict["isCurrentJob"] as? Bool ?? false
         
-        // Print types of date fields
+       
         print("startDate type: \(type(of: dict["startDate"] ?? "nil"))")
         print("endDate type: \(type(of: dict["endDate"] ?? "nil"))")
         
-        // Handle duration shortcut
+    
         if let directDuration = dict["duration"] as? Double {
             print("Found direct duration: \(directDuration) years")
             let startDate = Calendar.current.date(byAdding: .year, value: -Int(ceil(directDuration)), to: Date()) ?? Date()
