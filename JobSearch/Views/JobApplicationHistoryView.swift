@@ -7,20 +7,20 @@ extension DateFormatter {
         let formatter = DateFormatter()
         formatter.dateStyle = dateStyle
         formatter.timeStyle = timeStyle
-        formatter.locale = Locale(identifier: LanguageManager.shared.selectedLanguage) // <- use custom language
+        formatter.locale = Locale(identifier: LanguageManager.shared.selectedLanguage) 
         return formatter
     }
 }
 
 
-// MARK: - JobApplication Model
+
 struct JobApplication: Identifiable {
     let id: String
     let jobTitle: String
     let companyName: String
-    let status: String // "applied" or "rejected"
+    let status: String 
     let timestamp: Date
-    let vacancyStatus: String? // "active", "inactive", or nil
+    let vacancyStatus: String? 
     
     
     var displayStatus: String {
@@ -42,9 +42,9 @@ struct JobApplication: Identifiable {
     }
 }
 
-// MARK: - Status Badge
+
 struct StatusBadge: View {
-    let status: String // "applied" or "closed"
+    let status: String 
     
     var body: some View {
         Text(status.capitalized.localized())
@@ -62,7 +62,7 @@ struct StatusBadge: View {
     }
 }
 
-// MARK: - Job Application History View
+
 struct JobApplicationHistoryView: View {
     @State private var applications: [JobApplication] = []
     @State private var isLoading = true
@@ -100,7 +100,7 @@ struct JobApplicationHistoryView: View {
         }
     }
     
-    // MARK: - Subviews
+   
     
     private var loadingView: some View {
         VStack(spacing: 16) {
@@ -163,7 +163,7 @@ struct JobApplicationHistoryView: View {
         }
     }
     
-    // MARK: - Data Fetching
+
     
     private func fetchApplicationHistory() {
         guard let uid = Auth.auth().currentUser?.uid else {
@@ -192,7 +192,7 @@ struct JobApplicationHistoryView: View {
                     let data = document.data()
                     let vacancyId = document.documentID
                     
-                    // Check vacancy status
+                   
                     db.collection("vacancies").document(vacancyId).getDocument { vacancySnapshot, _ in
                         var vacancyStatus: String? = nil
                         
@@ -217,7 +217,7 @@ struct JobApplicationHistoryView: View {
     }
 }
 
-// MARK: - Application Row View
+
 struct ApplicationRowView: View {
     let application: JobApplication
     @State private var showingDetails = false
@@ -257,7 +257,7 @@ struct ApplicationRowView: View {
     }
 }
 
-// MARK: - Application Detail View
+
 struct ApplicationDetailView: View {
     let application: JobApplication
     @State private var localizedCity: String = ""
@@ -302,7 +302,7 @@ struct ApplicationDetailView: View {
         }
     }
     
-    // MARK: - Subviews
+  
     
     private var loadingDetailView: some View {
         VStack(spacing: 16) {
@@ -424,12 +424,12 @@ struct ApplicationDetailView: View {
         }
     }
     
-    // MARK: - Data Fetching
+ 
     
     private func fetchVacancyDetails() {
         isLoading = true
         let db = Firestore.firestore()
-        let viewModel = CitySearchViewModel() // Create the view model you need for translation
+        let viewModel = CitySearchViewModel() 
         
         db.collection("vacancies").document(application.id).getDocument {snapshot, error in
             
@@ -445,13 +445,13 @@ struct ApplicationDetailView: View {
                 return
             }
             
-            // Create the vacancy with the raw data first
+           
             self.vacancy = Vacancy(id: self.application.id, data: data)
             
-            // Use DispatchGroup to handle multiple async translations
+        
             let group = DispatchGroup()
             
-            // Fetch and translate city name if available
+          
             if let cityID = data["city_place_id"] as? String {
                 group.enter()
                 viewModel.fetchLocalizedName(for: cityID) { name in
@@ -462,7 +462,7 @@ struct ApplicationDetailView: View {
                 }
             }
             
-            // Fetch and translate country name if available
+         
             if let countryID = data["country_place_id"] as? String {
                 group.enter()
                 viewModel.fetchLocalizedName(for: countryID) { name in
