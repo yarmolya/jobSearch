@@ -3,32 +3,31 @@ import Firebase
 import FirebaseFirestore
 
 class TopsisCalculator {
-    // Normalized weights from vacancy
+ 
     private var educationWeight: Double = 0.2
     private var experienceWeight: Double = 0.2
     private var fieldMatchWeight: Double = 0.2
     private var languagesWeight: Double = 0.2
     private var locationWeight: Double = 0.2
     
-    // Ideal values
+  
     private var idealPositive: [Double] = []
     private var idealNegative: [Double] = []
-    
-    // Constructor to initialize with vacancy requirements
+   
     init(weights: [String: Double]) {
         self.educationWeight = weights["educationWeight"] ?? 0.2
         self.experienceWeight = weights["experienceWeight"] ?? 0.2
         self.fieldMatchWeight = weights["fieldMatchWeight"] ?? 0.2
-        self.languagesWeight = weights["skillsWeight"] ?? 0.2 // Fixed key name to match data
+        self.languagesWeight = weights["skillsWeight"] ?? 0.2 
         self.locationWeight = weights["locationWeight"] ?? 0.2
     }
     
-    // Main function to rank candidates
+    
     func rankCandidates(
         vacancyData: [String: Any],
         candidates: [[String: Any]]
     ) -> [TopsisCandidate] {
-        // Extract vacancy requirements
+       
         let requiredEducationLevel = educationLevelToNumeric(vacancyData["requiredEducationLevel"] as? String ?? "No education")
         let requiredExperience = vacancyData["requiredWorkExperience"] as? Double ?? 0.0
         let vacancyJobField = vacancyData["jobField"] as? String ?? ""
@@ -40,12 +39,12 @@ class TopsisCalculator {
         let requiredStudyField = vacancyData["educationField"] as? String ?? ""
         let requiredSpecialization = vacancyData["educationSpecialization"] as? String ?? ""
         
-        // Prepare decision matrix
+     
         var decisionMatrix: [[Double]] = []
         var originalData: [[String: Any]] = []
-        var rawScores: [[Double]] = [] // Store the raw scores
+        var rawScores: [[Double]] = [] 
         
-        // Define weights for both scoring systems
+        
         let weights = [
             educationWeight,
             experienceWeight,
@@ -54,9 +53,9 @@ class TopsisCalculator {
             locationWeight
         ]
         
-        // Fill decision matrix
+        
         for candidateData in candidates {
-            // Education score with relevancy factor
+           
             let candidateEducationLevel = educationLevelToNumeric(candidateData["educationLevel"] as? String ?? "No education")
             let candidateStudyField = candidateData["studyField"] as? String ?? ""
             let candidateSpecialization = candidateData["specialization"] as? String ?? ""
@@ -72,26 +71,26 @@ class TopsisCalculator {
             print("====================================")
             print("Candidate: \(candidateData["firstName"] as? String ?? "Unknown") \(candidateData["lastName"] as? String ?? "")")
             
-            // Work experience processing
+      
             var workExperience: [WorkExperience] = []
             
-            // Try array format first
+        
             if let experienceArray = candidateData["workExperiences"] as? [[String: Any]] {
                 print("✅ Found workExperiences as array with \(experienceArray.count) entries")
                 workExperience = parseWorkExperience(from: experienceArray)
             }
-            // Try dictionary format (Firestore sometimes stores arrays as dictionaries)
+           
             else if let experienceDict = candidateData["workExperiences"] as? [String: [String: Any]] {
                 print("✅ Found workExperiences as dictionary with \(experienceDict.count) entries")
                 let experienceArray = Array(experienceDict.values)
                 workExperience = parseWorkExperience(from: experienceArray)
             }
-            // Try singular key as fallback
+           
             else if let experienceArray = candidateData["workExperience"] as? [[String: Any]] {
                 print("✅ Found workExperience (singular) as array with \(experienceArray.count) entries")
                 workExperience = parseWorkExperience(from: experienceArray)
             }
-            // Try direct workExperience as dictionary
+          
             else if let experienceDict = candidateData["workExperience"] as? [String: Any] {
                 print("✅ Found workExperience (singular) as dictionary")
                 workExperience = parseWorkExperience(from: [experienceDict])
@@ -101,7 +100,7 @@ class TopsisCalculator {
                 print("Available keys:", candidateData.keys)
             }
             
-            // Experience score
+     
             let experienceScore = calculateExperienceScore(
                 requiredExperience: requiredExperience,
                 requiredField: vacancyJobField,
@@ -112,7 +111,7 @@ class TopsisCalculator {
             var candidateFields: [String] = []
             var candidateSpecializations: [String] = []
 
-            // First try the flat array format (new format)
+         
             if let fieldsArray = candidateData["preferredJobFields"] as? [String] {
                 candidateFields = fieldsArray
                 print("✅ Found preferredJobFields as flat array: \(fieldsArray)")
@@ -122,20 +121,20 @@ class TopsisCalculator {
                     print("✅ Found preferredJobFieldSpecializations as flat array: \(specializationsArray)")
                 }
             }
-            // Then try the nested format (old format)
+          
             else if let preferredFieldsArray = candidateData["preferredJobFields"] as? [[String: Any]] {
                 print("🔍 Processing preferredJobFields array with \(preferredFieldsArray.count) items")
                 
                 for fieldGroup in preferredFieldsArray {
                     print("📋 Processing field group: \(fieldGroup)")
                     
-                    // Extract category
+                
                     if let category = fieldGroup["category"] as? String {
                         candidateFields.append(category)
                         print("✅ Added category: \(category)")
                     }
                     
-                    // Handle specializations
+                   
                     if let specializationsAny = fieldGroup["preferredJobFieldSpecializations"] {
                         if let specializations = specializationsAny as? [String] {
                             candidateSpecializations.append(contentsOf: specializations)
@@ -165,7 +164,7 @@ class TopsisCalculator {
                 allFieldsSelected: allFieldsSelected
             )
             
-            // Languages score
+           
             let candidateLanguages: [[String: Any]] = {
                 guard let languages = candidateData["languages"] as? [[String: Any]] else {
                     return []
@@ -189,7 +188,7 @@ class TopsisCalculator {
                 candidateLanguages: candidateLanguages
             )
             
-            // Location score
+       
             let candidateCity = candidateData["city"] as? String ?? ""
             let candidateCountry = candidateData["country"] as? String ?? ""
             let candidateDistance = candidateData["acceptableDistance"] as? Int ?? 0
@@ -201,10 +200,10 @@ class TopsisCalculator {
                 candidateAcceptableDistance: candidateDistance
             )
             
-            // Driver license impact (applied to overall score later)
+         
             let hasDriverLicense = candidateData["hasDriverLicense"] as? Bool ?? false
             
-            // Store raw scores
+  
             let scoreRow = [
                 educationScore,
                 experienceScore,
@@ -213,7 +212,7 @@ class TopsisCalculator {
                 locationScore
             ]
             
-            // Debug information for each candidate
+  
             print("""
             Candidate: \(candidateData["firstName"] as? String ?? "") \(candidateData["lastName"] as? String ?? "")
             - Education Level: \(candidateData["educationLevel"] as? String ?? "Unknown")
@@ -226,10 +225,10 @@ class TopsisCalculator {
             
             rawScores.append(scoreRow)
             
-            // Add row to decision matrix
+        
             decisionMatrix.append(scoreRow)
             
-            // Keep track of original data
+    
             originalData.append(candidateData)
             print("""
                 scores:
@@ -241,37 +240,35 @@ class TopsisCalculator {
                 """)
         }
         
-        // Calculate TOPSIS scores for ranking (if there's more than one candidate)
+
         var topsisScores: [Double] = Array(repeating: 0.0, count: candidates.count)
         
         if candidates.count > 1 {
-            // Normalize the decision matrix
+            
             let normalizedMatrix = normalizeMatrix(decisionMatrix)
             
-            // Apply weights to the normalized matrix
+      
             let weightedMatrix = applyWeights(normalizedMatrix, weights: weights)
-            
-            // Calculate ideal solutions
+     
             calculateIdealSolutions(weightedMatrix)
             
-            // Calculate separation measures
+      
             let separations = calculateSeparationMeasures(weightedMatrix)
             
-            // Calculate relative closeness (TOPSIS scores)
+           
             topsisScores = calculateRelativeCloseness(separations)
         }
-        
-        // Calculate absolute scores for visualization (for all candidates)
+
         var absoluteScores: [Double] = []
         
         for scoreRow in rawScores {
-            // Calculate weighted absolute score
+           
             var score = 0.0
             for i in 0..<scoreRow.count {
                 score += scoreRow[i] * weights[i]
             }
             
-            // Apply driver's license impact
+           
             let candidateData = originalData[absoluteScores.count]
             let hasDriverLicense = candidateData["hasDriverLicense"] as? Bool ?? false
             if requiresDriverLicense && !hasDriverLicense {
@@ -283,14 +280,14 @@ class TopsisCalculator {
             absoluteScores.append(score)
         }
         
-        // Create final candidate objects with both scores
+      
         var rankedCandidates: [TopsisCandidate] = []
         
         for (index, candidateData) in originalData.enumerated() {
             let id = candidateData["jobSeekerId"] as? String ?? candidateData["uid"] as? String ?? UUID().uuidString
             let firstName = candidateData["firstName"] as? String ?? "Unknown Candidate"
             let lastName = candidateData["lastName"] as? String ?? "Unknown Candidate"
-            // Use TOPSIS score if available, otherwise use absolute score for single candidate
+           
             let topsisScore = candidates.count > 1 ? topsisScores[index] : absoluteScores[index]
             let absoluteScore = absoluteScores[index]
             let educationLevel = candidateData["educationLevel"] as? String ?? "Unknown"
@@ -300,7 +297,7 @@ class TopsisCalculator {
             let location = "\(city) \(country)".trimmingCharacters(in: .whitespacesAndNewlines)
             let hasDriverLicense = candidateData["hasDriverLicense"] as? Bool ?? false
             
-            // Extract applied date
+         
             let appliedDate: Date
             if let timestamp = candidateData["appliedDate"] as? Timestamp {
                 appliedDate = timestamp.dateValue()
@@ -312,7 +309,7 @@ class TopsisCalculator {
                 appliedDate = Date()
             }
             
-            // Extract fields for the missing parameters
+           
             var experienceField = ""
             var experienceSpecialization = ""
             if let workExperienceDicts = candidateData["workExperiences"] as? [[String: Any]], let firstExperience = workExperienceDicts.first {
@@ -323,7 +320,7 @@ class TopsisCalculator {
                 experienceSpecialization = firstExperience["specialization"] as? String ?? ""
             }
             
-            // Education fields
+     
             var studyField = candidateData["studyField"] as? String ?? ""
             var specialization = candidateData["specialization"] as? String ?? ""
             
@@ -357,13 +354,13 @@ class TopsisCalculator {
             ))
         }
         
-        // Sort candidates by TOPSIS score (descending)
+
         rankedCandidates.sort(by: >)
         
         return rankedCandidates
     }
     
-    // Convert education level string to numeric value (0-6)
+
     private func educationLevelToNumeric(_ level: String) -> Int {
         let levels = [
             "No education",
@@ -378,7 +375,7 @@ class TopsisCalculator {
         return levels.firstIndex(of: level) ?? 0
     }
     
-    // Calculate education score
+ 
     private func calculateEducationScore(
         requiredLevel: Int,
         candidateLevel: Int,
@@ -409,7 +406,7 @@ class TopsisCalculator {
             print("📉 Candidate level below required. Base score: \(score)")
         }
         
-        // Penalize for study field mismatch
+    
         if !requiredStudyField.isEmpty, !candidateStudyField.isEmpty {
             if candidateStudyField.lowercased() != requiredStudyField.lowercased() {
                 print("⚠️ Study field mismatch. Applying -0.2 penalty.")
@@ -419,7 +416,7 @@ class TopsisCalculator {
             }
         }
         
-        // Penalize for specialization mismatch
+      
         if !requiredSpecialization.isEmpty, !candidateSpecialization.isEmpty {
             if candidateSpecialization.lowercased() != requiredSpecialization.lowercased() {
                 print("⚠️ Specialization mismatch. Applying -0.2 penalty.")
@@ -434,7 +431,7 @@ class TopsisCalculator {
         return finalScore
     }
     
-    // Calculate experience score
+   
     private func calculateExperienceScore(
         requiredExperience: Double,
         requiredField: String,
@@ -467,16 +464,16 @@ class TopsisCalculator {
             
             if expField == reqField {
                 if reqSpec.isEmpty || expSpec == reqSpec {
-                    // Perfect match - field and specialization match
+                 
                     print("✅ Perfect field and specialization match - full credit")
                     relevantMonths += durationMonths
                 } else {
-                    // Partial match - field matches but specialization differs
+                  
                     print("⚠️ Field matches but specialization differs - partial credit")
                     relevantMonths += durationMonths * 0.7 // Reduced credit
                 }
             } else {
-                // No field match - minimal credit for unrelated experience
+        
                 print("❌ No field match - minimal credit")
                 relevantMonths += durationMonths * 0.2
             }
@@ -487,8 +484,7 @@ class TopsisCalculator {
         print("🏁 Final experience score: \(score)\n")
         return score
     }
-    
-    // UPDATED: Calculate field match score with specialization support
+
     private func calculateFieldMatchScore(
         vacancyField: String,
         vacancySpecialization: String,
@@ -504,13 +500,13 @@ class TopsisCalculator {
         print("• Candidate Specializations: \(candidateSpecializations)")
         print("• All Fields Selected: \(allFieldsSelected)")
         
-        // Case: No specific field required
+     
         if vacancyField.isEmpty || allFieldsSelected {
             print("✅ No field specified or all fields selected. Returning score: 0.5")
             return 0.5
         }
         
-        // Case: Candidate has no field preferences
+      
         if candidateFields.isEmpty {
             print("❌ Candidate has no preferred fields. Returning score: 0.0")
             return 0.0
@@ -564,7 +560,7 @@ class TopsisCalculator {
                 continue
             }
             
-            // Word-level similarity
+       
             let vacancyWords = normalizedVacancyField.split(separator: " ")
             let fieldWords = normalizedField.split(separator: " ")
             let commonWords = vacancyWords.filter { fieldWords.contains($0) }
@@ -578,7 +574,7 @@ class TopsisCalculator {
             }
         }
         
-        // Specialization bonus
+ 
         if bestPartialScore > 0.0 {
             if !normalizedVacancySpec.isEmpty && !candidateSpecializations.isEmpty {
                 let hasMatchingSpec = candidateSpecializations.contains { $0.lowercased() == normalizedVacancySpec }
@@ -598,7 +594,7 @@ class TopsisCalculator {
     }
 
     
-    // Calculate languages score - UPDATED TO GIVE MAX POINTS FOR HIGHER LEVELS
+    
     private func calculateLanguagesScore(
         requiredLanguages: [[String: Any]],
         candidateLanguages: [[String: Any]]
@@ -618,12 +614,12 @@ class TopsisCalculator {
         var totalScore = 0.0
         let requiredLanguageCount = requiredLanguages.count
         
-        // Define proficiency levels and their numeric values
+        
         let proficiencyLevels = ["A1": 1, "A2": 2, "B1": 3, "B2": 4, "C1": 5, "C2": 6, "Mother Tongue": 7]
         
-        // Process each required language
+ 
         for reqLang in requiredLanguages {
-            // Extract required language name
+           
             var reqLangName = ""
             if let langDict = reqLang["language"] as? [String: String] {
                 reqLangName = langDict["en"]?.lowercased() ?? ""
@@ -636,11 +632,11 @@ class TopsisCalculator {
             
             print("🔍 Checking for required language: \(reqLangName) at level \(reqProficiencyStr) (numeric: \(reqProficiency))")
             
-            // Find best matching language in candidate's languages
+          
             var bestMatchScore = 0.0
             
             for candLang in candidateLanguages {
-                // Extract candidate language name
+              
                 var candLangName = ""
                 if let langDict = candLang["language"] as? [String: String] {
                     candLangName = langDict["en"]?.lowercased() ?? ""
@@ -655,7 +651,7 @@ class TopsisCalculator {
                 
                 print("🌐 Comparing with candidate language: \(candLangName) at level \(candProficiencyStr) (numeric: \(candProficiency))")
                 
-                // Only match the exact language - no partial credits for different languages
+                
                 if candLangName.lowercased() == reqLangName.lowercased() {
                     print("✅ Match found! Required level: \(reqProficiency), candidate level: \(candProficiency)")
                     
@@ -664,7 +660,7 @@ class TopsisCalculator {
                         matchScore = 1.0
                         print("🎯 Candidate meets or exceeds required level - full points")
                     } else {
-                        // More stringent partial credit for lower proficiency
+                      
                         matchScore = Double(candProficiency) / Double(reqProficiency)
                         print("⚠️ Partial credit: \(matchScore)")
                     }
@@ -677,13 +673,13 @@ class TopsisCalculator {
             print("📊 Best match score for required language \(reqLangName): \(bestMatchScore)")
         }
         
-        // Calculate final score - divide by total number of required languages
+     
         let finalScore = totalScore / Double(requiredLanguageCount)
         print("🏁 Final language score: \(finalScore)\n")
         return finalScore
     }
     
-    // Calculate location score
+ 
     private func calculateLocationScore(
         vacancyCity: String,
         candidateCity: String,
@@ -691,7 +687,7 @@ class TopsisCalculator {
         candidateCountry: String,
         candidateAcceptableDistance: Int
     ) -> Double {
-        // If one of the cities is not specified - consider no geographical restrictions
+      
         if vacancyCity.isEmpty || candidateCity.isEmpty {
             print("📍 No location restrictions. Score: 1.0")
             return 1.0
@@ -702,44 +698,44 @@ class TopsisCalculator {
         print("• Candidate: \(candidateCity), \(candidateCountry)")
         print("• Candidate acceptable distance: \(candidateAcceptableDistance) km")
         
-        // If cities match - best match
+
         if vacancyCity.lowercased() == candidateCity.lowercased() {
             print("✅ Cities match exactly. Score: 1.0")
             return 1.0
         }
         
-        // If cities contain similar text - partial match
+      
         if vacancyCity.lowercased().contains(candidateCity.lowercased()) ||
             candidateCity.lowercased().contains(vacancyCity.lowercased()) {
             print("⚠️ Cities partially match. Score: 0.9")
             return 0.9
         }
         
-        // If countries are different - low relevance
+      
         if !vacancyCountry.isEmpty && !candidateCountry.isEmpty && vacancyCountry.lowercased() != candidateCountry.lowercased() {
             print("❌ Different countries. Score: 0.2")
             return 0.2
         }
         
-        // If same country but different cities - medium match
+     
         if vacancyCountry.lowercased() == candidateCountry.lowercased() {
             print("⚠️ Same country, different cities. Score: 0.8")
             return 0.8
         }
         
-        // Default - neutral score
+ 
         print("❓ Default location score: 0.5")
         return 0.5
     }
     
-    // Normalize decision matrix
+
     private func normalizeMatrix(_ matrix: [[Double]]) -> [[Double]] {
         guard !matrix.isEmpty else { return [] }
         
         let columnCount = matrix[0].count
         var normalizedMatrix = Array(repeating: Array(repeating: 0.0, count: columnCount), count: matrix.count)
         
-        // Calculate the sum of squares for each column
+       
         var columnSumOfSquares = Array(repeating: 0.0, count: columnCount)
         
         for row in matrix {
@@ -748,12 +744,12 @@ class TopsisCalculator {
             }
         }
         
-        // Calculate square root of sum of squares
+      
         for j in 0..<columnCount {
             columnSumOfSquares[j] = sqrt(columnSumOfSquares[j])
         }
         
-        // Normalize each value
+  
         for i in 0..<matrix.count {
             for j in 0..<columnCount {
                 if columnSumOfSquares[j] > 0 {
@@ -767,7 +763,7 @@ class TopsisCalculator {
         return normalizedMatrix
     }
     
-    // Apply weights to normalized matrix
+   
     private func applyWeights(_ matrix: [[Double]], weights: [Double]) -> [[Double]] {
         var weightedMatrix = matrix
         
@@ -780,7 +776,7 @@ class TopsisCalculator {
         return weightedMatrix
     }
     
-    // Calculate ideal solutions
+
     private func calculateIdealSolutions(_ weightedMatrix: [[Double]]) {
         guard !weightedMatrix.isEmpty else {
             idealPositive = []
@@ -792,7 +788,7 @@ class TopsisCalculator {
         idealPositive = Array(repeating: Double.leastNonzeroMagnitude, count: columnCount)
         idealNegative = Array(repeating: Double.greatestFiniteMagnitude, count: columnCount)
         
-        // Find max and min values for each column
+        
         for i in 0..<weightedMatrix.count {
             for j in 0..<columnCount {
                 idealPositive[j] = max(idealPositive[j], weightedMatrix[i][j])
@@ -801,7 +797,7 @@ class TopsisCalculator {
         }
     }
     
-    // Calculate separation measures
+
     private func calculateSeparationMeasures(_ weightedMatrix: [[Double]]) -> [(positive: Double, negative: Double)] {
         var separations: [(positive: Double, negative: Double)] = []
         
@@ -823,7 +819,7 @@ class TopsisCalculator {
         return separations
     }
     
-    // Calculate relative closeness to ideal solution
+
     private func calculateRelativeCloseness(_ separations: [(positive: Double, negative: Double)]) -> [Double] {
         var scores: [Double] = []
         
