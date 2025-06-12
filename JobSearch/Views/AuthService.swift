@@ -28,7 +28,7 @@ class AuthService: ObservableObject {
     }
 
     private func setupAuthListener() {
-        // Remove any existing listener first
+        
         removeAuthListener()
         
         authHandle = Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
@@ -64,7 +64,7 @@ class AuthService: ObservableObject {
     }
 
     private func checkUserRole(uid: String) {
-        // Create a dispatch group to handle both checks
+        
         let group = DispatchGroup()
         var isJobSeeker = false
         var isEmployer = false
@@ -109,7 +109,7 @@ class AuthService: ObservableObject {
         isLoading = false
     }
     
-    // Add this function to refresh the auth state
+  
     func refreshAuthState() {
         if let user = Auth.auth().currentUser {
             user.reload { [weak self] error in
