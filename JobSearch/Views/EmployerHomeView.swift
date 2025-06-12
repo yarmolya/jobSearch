@@ -22,7 +22,7 @@ struct EmployerHomeView: View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 20) {
-                    // Company profile section
+                    
                     VStack(spacing: 16) {
                         if let url = profileImageURL {
                             AsyncImage(url: url) { image in
@@ -59,7 +59,7 @@ struct EmployerHomeView: View {
                             }
                         }
                         
-                        // Edit profile button
+                        
                         Button {
                             showEditProfile = true
                         } label: {
@@ -80,7 +80,7 @@ struct EmployerHomeView: View {
                     .background(Color(.systemGray6))
                     .cornerRadius(12)
                     
-                    // Add vacancy button
+                 
                     Button {
                         showingCreateVacancy = true
                     } label: {
@@ -97,7 +97,7 @@ struct EmployerHomeView: View {
                     }
                     .padding(.horizontal)
                     
-                    // Your vacancies section
+                   
                     VStack(alignment: .leading, spacing: 12) {
                         Text("Your vacancies".localized())
                             .font(.headline)
@@ -143,16 +143,16 @@ struct EmployerHomeView: View {
                 loadVacancies()
             }
             .sheet(isPresented: $showingCreateVacancy) {
-                // Use the combined CreateJobVacancyView for creating new vacancies
+                
                 CreateJobVacancyView()
                     .onDisappear {
-                        loadVacancies() // Reload vacancies when returning from creating a new one
+                        loadVacancies() 
                     }
             }
             .navigationDestination(isPresented: $showEditProfile) {
                 EmployerProfileEditorView()
                     .onDisappear {
-                        loadData() // Reload profile data when returning from editing
+                        loadData() 
                     }
             }
             .navigationBarBackButtonHidden(true) 
@@ -179,7 +179,7 @@ struct EmployerHomeView: View {
         }
     }
     
-    // MARK: - Logout Functionality
+
     
     func logout() {
         showingLogoutAlert = true
@@ -216,7 +216,7 @@ struct EmployerHomeView: View {
     }
 }
 
-// Card to show vacancy information
+
 struct VacancyCard: View {
     let vacancy: Vacancy
     @State private var showRanking = false
@@ -232,7 +232,7 @@ struct VacancyCard: View {
                 
                 Spacer()
                 
-                // Status badge
+               
                 Text(vacancy.status == "active" ? "Active".localized() : "Inactive".localized())
                     .font(.caption2)
                     .padding(.horizontal, 8)
@@ -259,9 +259,9 @@ struct VacancyCard: View {
             Divider()
                 .padding(.vertical, 4)
             
-            // Actions row
+          
             HStack(spacing: 16) {
-                // Applicants button
+                
                 Button(action: {
                     showRanking = true
                 }) {
@@ -279,7 +279,7 @@ struct VacancyCard: View {
                 
                 Spacer()
                 
-                // Edit button
+               
                 Button(action: {
                     showEditVacancy = true
                 }) {
@@ -295,13 +295,13 @@ struct VacancyCard: View {
                     .cornerRadius(8)
                 }
                 
-                // More options menu
+                
                 Menu {
                     if vacancy.status == "active" {
                         Button(action: {
                             vacancyViewModel.deactivateVacancy(vacancyId: vacancy.id) { success in
                                 if success {
-                                    // Update the local vacancy status
+                                   
                                     if let index = vacancyViewModel.vacancies.firstIndex(where: { $0.id == vacancy.id }) {
                                         vacancyViewModel.vacancies[index].status = "inactive"
                                     }
@@ -314,7 +314,7 @@ struct VacancyCard: View {
                         Button(action: {
                             vacancyViewModel.activateVacancy(vacancyId: vacancy.id) { success in
                                 if success {
-                                    // Update the local vacancy status
+                                    
                                     if let index = vacancyViewModel.vacancies.firstIndex(where: { $0.id == vacancy.id }) {
                                         vacancyViewModel.vacancies[index].status = "active"
                                     }
@@ -344,10 +344,10 @@ struct VacancyCard: View {
             TopsisRankingView(vacancyId: vacancy.id)
         }
         .sheet(isPresented: $showEditVacancy) {
-            // Use CreateJobVacancyView for editing by passing the vacancyId
+            
             CreateJobVacancyView(vacancyId: vacancy.id)
                 .onDisappear {
-                    // Refresh vacancies after editing
+                    
                     vacancyViewModel.loadEmployerVacancies(employerId: Auth.auth().currentUser?.uid ?? "")
                 }
         }
@@ -355,7 +355,7 @@ struct VacancyCard: View {
             Button("Cancel".localized(), role: .cancel) {}
             Button("Delete".localized(), role: .destructive) {
                 vacancyViewModel.deleteVacancy(vacancyId: vacancy.id) { _ in
-                    // The vacancy will be removed from the vacancies array in the deleteVacancy method
+                    
                 }
             }
         } message: {
