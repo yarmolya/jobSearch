@@ -94,7 +94,7 @@ struct JobSeekerHomeView: View {
         }
     }
     
-    // MARK: - View Components
+   
     
     var loadingView: some View {
         VStack(spacing: 16) {
@@ -482,7 +482,7 @@ struct JobSeekerHomeView: View {
         }
     }
     
-    // MARK: - Logout Functionality
+    
     
     @State private var showingLogoutAlert = false
     
@@ -508,7 +508,7 @@ struct JobSeekerHomeView: View {
         }
     }
     
-    // MARK: - Data Methods (unchanged)
+   
     func fetchUserData() {
             guard let currentUser = Auth.auth().currentUser else {
                     print("❌ No authenticated user found")
@@ -549,10 +549,10 @@ struct JobSeekerHomeView: View {
                     self.hasCV = (data["resumeURL"] as? String) != nil
                     self.userProfile = data
                     
-                    // Now that we have the user profile data, fetch the localized city and country names
+                  
                     let viewModel = CitySearchViewModel()
                     
-                    // Use a dispatch group to track completion of both async operations
+                   
                     let group = DispatchGroup()
                     
                     if let cityID = data["city_place_id"] as? String {
@@ -575,7 +575,7 @@ struct JobSeekerHomeView: View {
                         }
                     }
                     
-                    // Once both operations complete, update loading state
+                
                     group.notify(queue: .main) {
                         self.isLoading = false
                     }
@@ -587,7 +587,7 @@ struct JobSeekerHomeView: View {
         }
         
         func refreshData() async {
-            // Simulate network delay for better UX
+           
             try? await Task.sleep(nanoseconds: 800_000_000)
             fetchUserData()
             fetchRecentApplications()
@@ -619,7 +619,7 @@ struct JobSeekerHomeView: View {
                         let data = document.data()
                         let vacancyId = document.documentID
                         
-                        // Check vacancy status
+                       
                         db.collection("vacancies").document(vacancyId).getDocument { vacancySnapshot, _ in
                             var vacancyStatus: String? = nil
                             
@@ -637,7 +637,7 @@ struct JobSeekerHomeView: View {
                     }
                     
                     dispatchGroup.notify(queue: .main) {
-                        // Sort by the original index to maintain order
+                       
                         self.recentApplications = applications.sorted { $0.index < $1.index }.map { $0.application }
                         self.isLoadingApplications = false
                     }
@@ -668,7 +668,7 @@ struct JobSeekerHomeView: View {
         }
     }
 
-// MARK: - Supporting Views
+
 
 struct SummaryRowView: View {
     let label: String
