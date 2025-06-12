@@ -30,18 +30,18 @@ struct CreateJobVacancyView: View {
         }
     }
     
-    let vacancyId: String? // nil for create, non-nil for edit
+    let vacancyId: String? 
     @ObservedObject var languageManager = LanguageManager.shared
     @Environment(\.dismiss) private var dismiss
     
-    // Vacancy data
+    
     @State private var jobTitle = ""
     @State private var jobDescription = ""
     @State private var salaryRange = ""
     @State private var jobType = 0 // 0: office, 1: remote, 2: hybrid
     @State private var vacancyDeadline = Date().addingTimeInterval(30*24*60*60) // +30 days
     
-    // Requirements
+   
     @State private var requiredEducationLevel: EducationLevel = .none
     @State private var requiredExperienceType = 0
     @State private var requiredExperienceMonths = 0
@@ -49,19 +49,19 @@ struct CreateJobVacancyView: View {
     @State private var requiredWorkExperience = 0.0
     @State private var requiresDriverLicense = false
     
-    // Location
+  
     @State private var country = ""
     @State private var city = ""
     @State private var cityCoordinates: CLLocationCoordinate2D? = nil
     @State private var cityPlaceId: String = ""
     @State private var countryPlaceId: String = ""
     
-    // Job categories and specializations
+   
     @StateObject private var jobFieldVM = JobFieldViewModel()
     @State private var selectedCategory: JobCategory?
     @State private var selectedField: JobCategory.Field?
     
-    // Education
+   
     @StateObject private var studyFieldVM = StudyFieldViewModel()
     @State private var selectedStudyCategory: StudyCategory?
     @State private var selectedStudyField: StudyCategory.Field?
@@ -69,7 +69,7 @@ struct CreateJobVacancyView: View {
     @State private var requiredLanguages: [UserLanguage] = []
     @State private var showAddLanguageSheet = false
     
-    // TOPSIS weights
+    
     @State private var showTopsisSection = false
     @State private var educationWeight = 0.5
     @State private var experienceWeight = 0.5
@@ -77,14 +77,14 @@ struct CreateJobVacancyView: View {
     @State private var skillsWeight = 0.5
     @State private var locationWeight = 0.3
     
-    // State variables
+    
     @State private var isSaving = false
     @State private var isLoading = false
     @State private var showSuccessAlert = false
     @State private var errorMessage = ""
     @State private var showErrorAlert = false
     
-    // Search models
+    
     @StateObject private var countryVM = CountrySearchViewModel()
     @StateObject private var cityVM = CitySearchViewModel()
     
@@ -115,7 +115,7 @@ struct CreateJobVacancyView: View {
                                 VStack(alignment: .leading, spacing: 16) {
                                     Text("").id(scrollTop)
                                     
-                                    // Job information section
+                                   
                                     VStack(alignment: .leading, spacing: 12) {
                                         Text("Job Information".localized())
                                             .font(.headline)
@@ -197,7 +197,7 @@ struct CreateJobVacancyView: View {
                                     .background(Color(.systemGray6))
                                     .cornerRadius(10)
                                     
-                                    // Requirements section
+                                    
                                     VStack(alignment: .leading, spacing: 12) {
                                         Text("Requirements".localized())
                                             .font(.headline)
@@ -388,7 +388,6 @@ struct CreateJobVacancyView: View {
                                     .background(Color(.systemGray6))
                                     .cornerRadius(10)
                                     
-                                    // Location section
                                     VStack(alignment: .leading, spacing: 12) {
                                         Text("Location".localized())
                                             .font(.headline)
@@ -490,7 +489,7 @@ struct CreateJobVacancyView: View {
                                     .background(Color(.systemGray6))
                                     .cornerRadius(10)
                                     
-                                    // TOPSIS weights section
+                                    
                                     VStack(alignment: .leading, spacing: 12) {
                                         HStack {
                                             Text("Candidate Selection Priorities".localized())
@@ -516,7 +515,7 @@ struct CreateJobVacancyView: View {
                                                     .font(.subheadline)
                                                     .foregroundColor(.secondary)
                                                 
-                                                // Education weight
+                                                
                                                 VStack(alignment: .leading, spacing: 6) {
                                                     HStack {
                                                         Text("Education:".localized())
@@ -531,7 +530,7 @@ struct CreateJobVacancyView: View {
                                                         .tint(.blue)
                                                 }
                                                 
-                                                // Experience weight
+                                               
                                                 VStack(alignment: .leading, spacing: 6) {
                                                     HStack {
                                                         Text("Experience:".localized())
@@ -546,7 +545,7 @@ struct CreateJobVacancyView: View {
                                                         .tint(.blue)
                                                 }
                                                 
-                                                // Field match weight
+                                             
                                                 VStack(alignment: .leading, spacing: 6) {
                                                     HStack {
                                                         Text("Field match:".localized())
@@ -561,7 +560,7 @@ struct CreateJobVacancyView: View {
                                                         .tint(.blue)
                                                 }
                                                 
-                                                // Skills weight
+                                                
                                                 VStack(alignment: .leading, spacing: 6) {
                                                     HStack {
                                                         Text("Skills:".localized())
@@ -576,7 +575,7 @@ struct CreateJobVacancyView: View {
                                                         .tint(.blue)
                                                 }
                                                 
-                                                // Location weight
+                                                
                                                 VStack(alignment: .leading, spacing: 6) {
                                                     HStack {
                                                         Text("Location:".localized())
@@ -620,7 +619,7 @@ struct CreateJobVacancyView: View {
                         }
                     }
                     
-                    // Publish/Save button
+                    
                     Button(action: isEditing ? updateVacancy : publishVacancy) {
                         if isSaving {
                             ProgressView().tint(.white)
@@ -697,7 +696,6 @@ struct CreateJobVacancyView: View {
             
             let data = document.data() ?? [:]
             
-            // Basic information
             jobTitle = data["jobTitle"] as? String ?? ""
             jobDescription = data["jobDescription"] as? String ?? ""
             salaryRange = data["salaryRange"] as? String ?? ""
@@ -712,7 +710,7 @@ struct CreateJobVacancyView: View {
                 vacancyDeadline = timestamp.dateValue()
             }
             
-            // Requirements
+           
             if let rawLevel = data["requiredEducationLevel"] as? String,
                 let parsedLevel = EducationLevel(rawValue: rawLevel) {
                 self.requiredEducationLevel = parsedLevel
@@ -722,7 +720,7 @@ struct CreateJobVacancyView: View {
             requiredWorkExperience = data["requiredWorkExperience"] as? Double ?? 0.0
             requiresDriverLicense = data["requiresDriverLicense"] as? Bool ?? false
             
-            // Convert required work experience to years/months for UI
+      
             if requiredWorkExperience < 1 {
                 requiredExperienceType = 1
                 requiredExperienceMonths = Int(requiredWorkExperience * 12)
@@ -731,7 +729,7 @@ struct CreateJobVacancyView: View {
                 requiredExperienceYears = Int(requiredWorkExperience)
             }
             
-            // Location
+            
             country = data["country"] as? String ?? ""
             city = data["city"] as? String ?? ""
             cityPlaceId = data["city_place_id"] as? String ?? ""
@@ -745,16 +743,16 @@ struct CreateJobVacancyView: View {
                 cityCoordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
             }
             
-            // Job field and specialization
+        
             let jobField = data["jobField"] as? String ?? ""
             let jobSpecialization = data["jobSpecialization"] as? String ?? ""
             
-            // Find category by English name first
+ 
             selectedCategory = jobFieldVM.categories.first { category in
                 category.category_en == jobField
             }
             
-            // If not found, try finding by Ukrainian name for backward compatibility
+          
             if selectedCategory == nil {
                 selectedCategory = jobFieldVM.categories.first { category in
                     category.category_uk == jobField
@@ -762,12 +760,12 @@ struct CreateJobVacancyView: View {
             }
             
             if let category = selectedCategory {
-                // Find field by English name first
+               
                 selectedField = category.fields.first { field in
                     field.en == jobSpecialization
                 }
                 
-                // If not found, try finding by Ukrainian name for backward compatibility
+           
                 if selectedField == nil {
                     selectedField = category.fields.first { field in
                         field.uk == jobSpecialization
@@ -775,16 +773,16 @@ struct CreateJobVacancyView: View {
                 }
             }
             
-            // Study field and specialization
+           
             let studyField = data["educationField"] as? String ?? ""
             let studySpecialization = data["educationSpecialization"] as? String ?? ""
             
-            // Find study category by English name first
+            
             selectedStudyCategory = studyFieldVM.categories.first { category in
                 category.category_en == studyField
             }
             
-            // If not found, try finding by Ukrainian name for backward compatibility
+           
             if selectedStudyCategory == nil {
                 selectedStudyCategory = studyFieldVM.categories.first { category in
                     category.category_uk == studyField
@@ -792,12 +790,12 @@ struct CreateJobVacancyView: View {
             }
             
             if let category = selectedStudyCategory {
-                // Find study field by English name first
+                
                 selectedStudyField = category.fields.first { field in
                     field.en == studySpecialization
                 }
                 
-                // If not found, try finding by Ukrainian name for backward compatibility
+                
                 if selectedStudyField == nil {
                     selectedStudyField = category.fields.first { field in
                         field.uk == studySpecialization
@@ -805,7 +803,7 @@ struct CreateJobVacancyView: View {
                 }
             }
             
-            // Required languages
+          
             if let languagesData = data["requiredLanguages"] as? [[String: Any]] {
                 requiredLanguages = languagesData.compactMap { languageData in
                     guard let id = languageData["id"] as? String,
@@ -820,7 +818,7 @@ struct CreateJobVacancyView: View {
                 }
             }
             
-            // TOPSIS weights
+           
             if let weights = data["topsisWeights"] as? [String: Double] {
                 educationWeight = weights["educationWeight"] ?? 0.5
                 experienceWeight = weights["experienceWeight"] ?? 0.5
@@ -847,12 +845,12 @@ struct CreateJobVacancyView: View {
         
         isSaving = true
         
-        // Normalize weights for TOPSIS
+        
         let topsisWeights = normalizeWeights()
         
         let db = Firestore.firestore()
         
-        // First, get employer data
+      
         db.collection("employers").document(uid).getDocument { (document, error) in
             if let error = error {
                 isSaving = false
@@ -869,7 +867,7 @@ struct CreateJobVacancyView: View {
                 return
             }
             
-            // Convert required languages to storable format
+            
             let requiredLanguagesData = requiredLanguages.map { userLanguage -> [String: Any] in
                 return [
                     "id": userLanguage.id,
@@ -881,32 +879,32 @@ struct CreateJobVacancyView: View {
                 ]
             }
             
-            // Create vacancy data - ALWAYS store in English
+          
             var vacancyData: [String: Any] = [
-                // Basic information
+                
                 "jobTitle": jobTitle,
                 "jobDescription": jobDescription,
                 "salaryRange": salaryRange,
                 "jobType": jobTypes[jobType],
                 "deadlineDate": Timestamp(date: vacancyDeadline),
                 
-                // Requirements
+                
                 "requiredEducationLevel": requiredEducationLevel.rawValue,
                 "requiredWorkExperience": requiredWorkExperience,
                 "requiresDriverLicense": requiresDriverLicense,
                 
-                // Languages
+                
                 "requiredLanguages": requiredLanguagesData,
                 
-                // Education - ALWAYS use English values
+             
                 "educationField": selectedStudyCategory?.category_en ?? "",
                 "educationSpecialization": selectedStudyField?.en ?? "",
                 
-                // Job field - ALWAYS use English values
+                
                 "jobField": selectedCategory?.category_en ?? "",
                 "jobSpecialization": selectedField?.en ?? "",
                 
-                // Location
+               
                 "country": country,
                 "city": city,
                 "city_latitude": cityCoordinates?.latitude ?? 0.0,
@@ -914,14 +912,14 @@ struct CreateJobVacancyView: View {
                 "country_place_id": countryPlaceId,
                 "city_place_id": cityPlaceId,
                 
-                // TOPSIS weights
+               
                 "topsisWeights": topsisWeights,
                 
-                // Update timestamp
+                
                 "updatedAt": FieldValue.serverTimestamp()
             ]
             
-            // Update the vacancy in Firestore
+         
             db.collection("vacancies").document(vacancyId).updateData(vacancyData) { error in
                 isSaving = false
                 
@@ -935,7 +933,7 @@ struct CreateJobVacancyView: View {
         }
     }
     
-    // Function to convert numeric weight value to text description of importance
+   
     private func importanceText(for weight: Double) -> String {
         switch weight {
         case 0.0:
@@ -991,11 +989,11 @@ struct CreateJobVacancyView: View {
         .cornerRadius(8)
     }
     
-    // Normalize weights to ensure their sum equals 1
+   
     private func normalizeWeights() -> [String: Double] {
         let totalWeight = educationWeight + experienceWeight + fieldMatchWeight + skillsWeight + locationWeight
         
-        // Only normalize if sum is not 0
+        
         let factor = totalWeight > 0 ? 1.0 / totalWeight : 1.0
         
         return [
@@ -1022,12 +1020,12 @@ struct CreateJobVacancyView: View {
         
         isSaving = true
         
-        // Normalize weights for TOPSIS
+        
         let topsisWeights = normalizeWeights()
         
         let db = Firestore.firestore()
         
-        // First, get employer data
+        
         db.collection("employers").document(uid).getDocument { (document, error) in
             if let error = error {
                 isSaving = false
@@ -1044,7 +1042,7 @@ struct CreateJobVacancyView: View {
                 return
             }
             
-            // Convert required languages to storable format
+          
             let requiredLanguagesData = requiredLanguages.map { userLanguage -> [String: Any] in
                 return [
                     "id": userLanguage.id,
@@ -1056,38 +1054,38 @@ struct CreateJobVacancyView: View {
                 ]
             }
             
-            // Create vacancy data - ALWAYS store in English
+           
             var vacancyData: [String: Any] = [
-                // Metadata
+               
                 "employerId": uid,
                 "companyName": companyName,
                 "createdAt": FieldValue.serverTimestamp(),
                 "status": "active",
                 
-                // Basic information
+               
                 "jobTitle": jobTitle,
                 "jobDescription": jobDescription,
                 "salaryRange": salaryRange,
                 "jobType": jobTypes[jobType],
                 "deadlineDate": Timestamp(date: vacancyDeadline),
                 
-                // Requirements
+                
                 "requiredEducationLevel": requiredEducationLevel.rawValue,
                 "requiredWorkExperience": requiredWorkExperience,
                 "requiresDriverLicense": requiresDriverLicense,
                 
-                // Add required languages to vacancy data
+               
                 "requiredLanguages": requiredLanguagesData,
                 
-                // Education - ALWAYS use English values
+                
                 "educationField": selectedStudyCategory?.category_en ?? "",
                 "educationSpecialization": selectedStudyField?.en ?? "",
                 
-                // Job field - ALWAYS use English values
+               
                 "jobField": selectedCategory?.category_en ?? "",
                 "jobSpecialization": selectedField?.en ?? "",
                 
-                // Location
+               
                 "country": country,
                 "city": city,
                 "city_latitude": cityCoordinates?.latitude ?? 0.0,
@@ -1095,15 +1093,15 @@ struct CreateJobVacancyView: View {
                 "country_place_id": countryPlaceId,
                 "city_place_id": cityPlaceId,
                 
-                // TOPSIS weights
+               
                 "topsisWeights": topsisWeights,
                 
-                // Additional fields for TOPSIS matching
+             
                 "applicants": [],
                 "shortlistedApplicants": []
             ]
             
-            // Save to Firestore
+            
             db.collection("vacancies").addDocument(data: vacancyData) { error in
                 isSaving = false
                 
@@ -1118,7 +1116,7 @@ struct CreateJobVacancyView: View {
     }
 }
 
-// Helper extension for preview
+
 extension CreateJobVacancyView {
     static func forEditing(vacancyId: String) -> CreateJobVacancyView {
         CreateJobVacancyView(vacancyId: vacancyId)
