@@ -168,27 +168,27 @@ struct JobSeekerMatchView: View {
         }
     }
     
-    // New function to handle card swipes
+    
     func handleCardSwipe(gesture: DragGesture.Value, vacancy: Vacancy) {
         withAnimation(.spring()) {
             if gesture.translation.width > 100 {
-                // Swipe right - Apply for job
+               
                 isProcessingCard = true
                 offset = CGSize(width: 500, height: 0)
                 applyForJob(vacancy)
             } else if gesture.translation.width < -100 {
-                // Swipe left - Reject
+               
                 isProcessingCard = true
                 offset = CGSize(width: -500, height: 0)
                 rejectJob(vacancy)
             } else {
-                // Return card to center
+              
                 offset = .zero
             }
         }
     }
     
-    // New function to handle reject button press
+   
     func handleRejectAction(vacancy: Vacancy) {
         withAnimation(.spring()) {
             isProcessingCard = true
@@ -197,7 +197,7 @@ struct JobSeekerMatchView: View {
         }
     }
     
-    // New function to handle apply button press
+    
     func handleApplyAction(vacancy: Vacancy) {
         withAnimation(.spring()) {
             isProcessingCard = true
@@ -219,17 +219,17 @@ struct JobSeekerMatchView: View {
                 return
             }
             
-            // First load the user's interaction history
+            
             self.loadUserInteractionHistory { interactionHistory in
-                // Then load matching vacancies with the interaction history
+                
                 self.vacancyViewModel.loadMatchingVacancies(for: jobSeekerData, excludingIds: interactionHistory) {
                     self.isLoading = false
                     self.currentIndex = 0
                     self.offset = .zero
                     
-                    // If no matching vacancies were found, directly show the empty state
+                   
                     if self.vacancyViewModel.vacancies.isEmpty {
-                        // Do nothing - the empty state will be shown automatically
+                       
                     }
                 }
             }
@@ -262,18 +262,18 @@ struct JobSeekerMatchView: View {
             withAnimation(.spring()) {
                 offset = .zero
                 
-                // Check if we still have cards left
+               
                 if currentIndex < self.vacancyViewModel.vacancies.count - 1 {
                     currentIndex += 1
                 } else {
-                    // No more cards: show the alert
+                    
                     showingNoMoreCards = true
                     
-                    // ALSO move currentIndex beyond the last card to avoid index issues
-                    currentIndex = self.vacancyViewModel.vacancies.count // This ensures we're out of bounds
+                   
+                    currentIndex = self.vacancyViewModel.vacancies.count 
                 }
                 
-                // Reset the processing flag after animation completes
+               
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                     isProcessingCard = false
                 }
@@ -287,7 +287,7 @@ struct JobSeekerMatchView: View {
             return
         }
         
-        // Record the rejection in the user's interactions
+        
         let db = Firestore.firestore()
         let interactionRef = db.collection("job_seekers").document(uid).collection("job_interactions").document(vacancy.id)
         
@@ -317,7 +317,7 @@ struct JobSeekerMatchView: View {
         let db = Firestore.firestore()
         let jobSeekerRef = db.collection("job_seekers").document(uid)
         
-        // Step 1: Fetch main job seeker document
+        
         jobSeekerRef.getDocument { document, error in
             guard let jobSeekerData = document?.data(), error == nil else {
                 print("❌ Failed to fetch job seeker data")
@@ -325,8 +325,7 @@ struct JobSeekerMatchView: View {
                 return
             }
 
-            // FIXED: Specialization extraction in applyForJob function
-            // Replace the existing extraction code in applyForJob with this:
+            
 
             var preferredFields: [String] = []
             var preferredSpecializations: [String] = []
@@ -335,14 +334,14 @@ struct JobSeekerMatchView: View {
                 print("🔍 Processing preferredJobFields in applyForJob: \(preferredJobFields)")
                 
                 for fieldGroup in preferredJobFields {
-                    // Extract category
+                   
                     if let category = fieldGroup["category"] as? String {
                         preferredFields.append(category)
                     }
                     
-                    // FIXED: Handle NSMutableArray from Firestore
+                   
                     if let specializationsAny = fieldGroup["preferredJobFieldSpecializations"] {
-                        // Try different casting approaches for Firestore data
+                       
                         if let specializations = specializationsAny as? [String] {
                             preferredSpecializations.append(contentsOf: specializations)
                         } else if let specializationsArray = specializationsAny as? NSArray {
@@ -380,12 +379,12 @@ struct JobSeekerMatchView: View {
                 "appliedDate": Timestamp(date: Date()),
                 "status": "pending",
                 "preferredJobFields": preferredFields,
-                "preferredJobFieldSpecializations": preferredSpecializations, // FIXED: Store as flat array
+                "preferredJobFieldSpecializations": preferredSpecializations, 
             ]
             
             let group = DispatchGroup()
             
-            // Step 2: Fetch work experiences
+            
             group.enter()
             jobSeekerRef.collection("workExperiences").getDocuments { snapshot, error in
                 if error != nil {
@@ -395,7 +394,7 @@ struct JobSeekerMatchView: View {
                 group.leave()
             }
             
-            // Step 3: Fetch languages
+           
             group.enter()
             jobSeekerRef.collection("languages").getDocuments { snapshot, error in
                 if error != nil {
@@ -405,7 +404,7 @@ struct JobSeekerMatchView: View {
                 group.leave()
             }
             
-            // Step 4: Once both subcollections are fetched, write to Firestore
+           
             group.notify(queue: .main) {
                 let applicantRef = db.collection("vacancies").document(vacancy.id).collection("applicants").document(uid)
                 
@@ -418,7 +417,7 @@ struct JobSeekerMatchView: View {
                     
                     print("✅ Successfully stored applicant data for vacancy \(vacancy.id)")
                     
-                    // Record the application in the user's interactions
+                   
                     let interactionRef = db.collection("job_seekers").document(uid).collection("job_interactions").document(vacancy.id)
                     
                     let interactionData: [String: Any] = [
@@ -435,8 +434,7 @@ struct JobSeekerMatchView: View {
                         if let error = error {
                             print("⚠️ Error storing interaction data: \(error.localizedDescription)")
                         }
-                        
-                        // Notify vacancy document or ViewModel
+                     
                         self.vacancyViewModel.toggleApplication(vacancyId: vacancy.id, jobSeekerId: uid, apply: true) { success in
                             if success {
                                 print("✅ Successfully marked as applied")
@@ -466,7 +464,7 @@ struct JobCardView: View {
     private var translatedJobField: String {
         guard !vacancy.jobField.isEmpty else { return "" }
         
-        // Normalize strings for comparison
+       
         let jobField = vacancy.jobField.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
         
         if let category = jobFieldVM.categories.first(where: {
@@ -475,7 +473,7 @@ struct JobCardView: View {
             return isUkrainian ? category.category_uk : category.category_en
         }
         
-        // Debug output
+       
         print("Could not find matching category for: \(vacancy.jobField)")
         print("Available categories: \(jobFieldVM.categories.map { $0.category_en })")
         
@@ -485,7 +483,7 @@ struct JobCardView: View {
     private var translatedJobSpecialization: String {
         guard !vacancy.jobSpecialization.isEmpty else { return "" }
         
-        // Normalize strings
+     
         let jobField = vacancy.jobField.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
         let specialization = vacancy.jobSpecialization.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
         
@@ -625,7 +623,7 @@ struct JobCardView: View {
        private func fetchLocalizedLocationNames() {
            let viewModel = CitySearchViewModel()
            
-           // Fetch localized city name if place ID is available
+           
            if let cityPlaceID = vacancy.cityPlaceId {
                viewModel.fetchLocalizedName(for: cityPlaceID) { name in
                    DispatchQueue.main.async {
@@ -636,7 +634,7 @@ struct JobCardView: View {
                self.localizedCity = vacancy.city
            }
            
-           // Fetch localized country name if place ID is available
+ 
            if let countryPlaceID = vacancy.countryPlaceId {
                viewModel.fetchLocalizedName(for: countryPlaceID) { name in
                    DispatchQueue.main.async {
@@ -680,7 +678,7 @@ struct DetailRow: View {
     }
 }
 
-// Helper view for displaying tags in a wrapping layout
+
 struct FlowLayout: Layout {
     var spacing: CGFloat = 10
     
