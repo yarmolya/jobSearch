@@ -17,9 +17,9 @@ struct EmployerRegisterView: View {
             VStack {
                 Spacer()
                 
-                // Centered content
+                
                 VStack(spacing: 24) {
-                    // Header
+                   
                     VStack(spacing: 8) {
                         Text("employer registration".localized())
                             .font(.system(.largeTitle, design: .rounded))
@@ -75,7 +75,7 @@ struct EmployerRegisterView: View {
                     }
                     .padding(.vertical, 8)
                     
-                    // Sign up button
+                    
                     Button(action: registerEmployer) {
                         if isLoading {
                             ProgressView()
@@ -106,7 +106,7 @@ struct EmployerRegisterView: View {
         errorMessage = ""
         isLoading = true
         
-        // Validate required fields
+       
         guard !email.trimmingCharacters(in: .whitespaces).isEmpty else {
             errorMessage = "Email is required.".localized()
             isLoading = false
