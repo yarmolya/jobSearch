@@ -14,9 +14,9 @@ struct LanguageSelectionView: View {
             VStack {
                 Spacer()
                 
-                // Centered content
+               
                 VStack(spacing: 24) {
-                    // Header
+                  
                     VStack(spacing: 8) {
                         Text("choose_language".localized())
                             .font(.system(.title, design: .rounded))
@@ -24,7 +24,7 @@ struct LanguageSelectionView: View {
                             .foregroundColor(.primary)
                     }
                     
-                    // Language buttons
+                   
                     VStack(spacing: 16) {
                         languageButton(title: "ukrainian".localized(), code: "uk", flagName: "uk")
                         languageButton(title: "english".localized(), code: "en", flagName: "en")
@@ -34,7 +34,7 @@ struct LanguageSelectionView: View {
                 
                 Spacer()
                 
-                // Next button at bottom
+               
                 if selectedLanguage != nil {
                     Button(action: {
                         withAnimation(.spring()) {
