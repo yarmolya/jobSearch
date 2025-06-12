@@ -25,9 +25,9 @@ struct EmployerProfileEditorView: View {
                 VStack {
                     Spacer()
                     
-                    // Centered content
+                 
                     VStack(spacing: 24) {
-                        // Header
+                       
                         VStack(spacing: 8) {
                             Text("Edit company profile".localized())
                                 .font(.system(.title, design: .rounded))
@@ -36,7 +36,7 @@ struct EmployerProfileEditorView: View {
                             
                         }
                         
-                        // Profile image
+                       
                         VStack(spacing: 8) {
                             if isLoading {
                                 ProgressView()
@@ -75,7 +75,7 @@ struct EmployerProfileEditorView: View {
                         }
                         .padding(.vertical, 16)
                         
-                        // Form fields
+                     
                         VStack(spacing: 16) {
                             CustomTextField(
                                 title: "Company name".localized(),
@@ -113,7 +113,7 @@ struct EmployerProfileEditorView: View {
                             }
                         }
                         
-                        // Save button
+                       
                         Button(action: saveProfile) {
                             if isLoading {
                                 ProgressView()
@@ -185,7 +185,7 @@ struct EmployerProfileEditorView: View {
             description = data["description"] as? String ?? ""
             website = data["website"] as? String ?? ""
             
-            // Load profile image if exists
+           
             if let profileImageURLString = data["profileImageURL"] as? String {
                 photoURL = profileImageURLString
                 loadImageFromURL(profileImageURLString)
@@ -231,7 +231,7 @@ struct EmployerProfileEditorView: View {
                 "website": website
             ]
 
-            // If we have a new image to upload
+        
             if imageWasChanged, let image = profileImage,
                let imageData = image.jpegData(compressionQuality: 0.8) {
                 let ref = storage.reference().child("employer_pfp/\(uid).jpg")
@@ -270,7 +270,7 @@ struct EmployerProfileEditorView: View {
                     }
                 }
             } else if let photoURL = photoURL {
-                // Keep existing photo
+               
                 var updatedData = dataToSave
                 updatedData["profileImageURL"] = photoURL
                 
@@ -283,7 +283,7 @@ struct EmployerProfileEditorView: View {
                     }
                 }
             } else {
-                // No photo
+               
                 db.collection("employers").document(uid).setData(dataToSave, merge: true) { err in
                     isLoading = false
                     if let err = err {
@@ -296,7 +296,7 @@ struct EmployerProfileEditorView: View {
         }
     }
 
-// Custom Text Editor for description field
+
 struct CustomTextEditor: View {
     let title: String
     @Binding var text: String
