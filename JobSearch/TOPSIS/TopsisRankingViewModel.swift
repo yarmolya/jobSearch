@@ -15,7 +15,7 @@ class TopsisRankingViewModel: ObservableObject {
         
         let db = Firestore.firestore()
         
-        // Fetch vacancy document
+       
         db.collection("vacancies").document(vacancyId).getDocument { [weak self] (document, error) in
             guard let self = self else { return }
             
@@ -68,9 +68,9 @@ class TopsisRankingViewModel: ObservableObject {
                     
                     dispatchGroup.enter()
                     self.fetchCandidateDetails(candidateId: candidateId, vacancyId: vacancyId) { extraData in
-                        // Merge base data with extra data
+                       
                         var fullCandidateData = baseData
-                        fullCandidateData.merge(extraData) { current, _ in current } // Keep baseData values if keys overlap
+                        fullCandidateData.merge(extraData) { current, _ in current } 
                         
                         allCandidates.append(fullCandidateData)
                         dispatchGroup.leave()
@@ -112,7 +112,7 @@ class TopsisRankingViewModel: ObservableObject {
         var candidateData: [String: Any] = [:]
         let dispatchGroup = DispatchGroup()
         
-        // 1. Fetch basic applicant data from vacancy's applicants subcollection
+        
         dispatchGroup.enter()
         db.collection("vacancies").document(vacancyId).collection("applicants").document(candidateId).getDocument { snapshot, error in
             if let data = snapshot?.data() {
@@ -121,7 +121,7 @@ class TopsisRankingViewModel: ObservableObject {
             dispatchGroup.leave()
         }
         
-        // 2. Fetch work experiences from job_seeker's subcollection
+        
         dispatchGroup.enter()
         db.collection("job_seekers").document(candidateId).collection("workExperiences").getDocuments { snapshot, error in
             if let experiences = snapshot?.documents.map({ $0.data() }) {
@@ -132,7 +132,7 @@ class TopsisRankingViewModel: ObservableObject {
             dispatchGroup.leave()
         }
         
-        // 3. Fetch languages from job_seeker's subcollection
+        
         dispatchGroup.enter()
         db.collection("job_seekers").document(candidateId).collection("languages").getDocuments { snapshot, error in
             if let languages = snapshot?.documents.map({ $0.data() }) {
