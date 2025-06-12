@@ -35,7 +35,7 @@ struct OnboardingSurveyView: View {
     @EnvironmentObject var authService: AuthService
     @State private var authStateListener: AuthStateDidChangeListenerHandle?
     
-    // Existing state variables
+    
     @State private var educationLevel: EducationLevel = .none
     @State private var hasDriverLicense = false
     @State private var desiredSpecialty = ""
@@ -50,17 +50,17 @@ struct OnboardingSurveyView: View {
     @State private var cityPlaceId: String = ""
     @State private var countryPlaceId: String = ""
     
-    // Work experience variables
+   
     @State private var experienceType = 0 // 0 = none, 1 = has experience
     @State private var workExperiences: [WorkExperience] = []
     @State private var showAddExperienceSheet = false
     @State private var editingExperience: WorkExperience? = nil
     
-    //Languages
+    
     @State private var userLanguages: [UserLanguage] = []
     @State private var showAddLanguageSheet = false
     
-    // Other existing state variables
+
     @StateObject private var countryVM = CountrySearchViewModel()
     @StateObject private var cityVM = CitySearchViewModel()
     @StateObject private var studyFieldVM = StudyFieldViewModel()
@@ -69,12 +69,12 @@ struct OnboardingSurveyView: View {
     @State private var selectedStudyCategory: StudyCategory?
     @State private var selectedStudyField: StudyCategory.Field?
     
-    // Updated job field selection approach
+   
     @State private var selectedJobCategories: [SelectedJobCategory] = []
     @State private var showingCategoryPicker = false
     @State private var allFieldsSelected = true
     
-    // For adding new job category selections
+  
     @State private var currentlyEditingCategoryIndex: Int? = nil
     @State private var showingFieldSelectionSheet = false
     @State private var selectedCategoryForAdding: JobCategory? = nil
@@ -86,11 +86,11 @@ struct OnboardingSurveyView: View {
     
     let distanceOptions = [0, 5, 15, 30]
     
-    // Computed property to calculate total work experience
+   
     var totalWorkExperience: Double {
         return workExperiences.reduce(0) { $0 + $1.duration }
     }
-    // Format total experience for display
+ 
     var formattedTotalExperience: String {
         let years = Int(totalWorkExperience)
         let months = Int((totalWorkExperience - Double(years)) * 12)
@@ -110,13 +110,13 @@ struct OnboardingSurveyView: View {
         languageManager.selectedLanguage == "uk"
     }
     
-    // Get all categories that haven't been selected yet
+
     var availableCategories: [JobCategory] {
         let selectedCategoryIds = Set(selectedJobCategories.map { $0.category.id })
         return jobFieldVM.categories.filter { !selectedCategoryIds.contains($0.id) }
     }
     
-    // Count total selected fields across all categories
+   
     var totalSelectedFields: Int {
         selectedJobCategories.reduce(0) { $0 + $1.selectedFields.count }
     }
@@ -133,7 +133,7 @@ struct OnboardingSurveyView: View {
                                 VStack(alignment: .leading, spacing: 16) {
                                     Text("").id(scrollTop)
                                     
-                                    // Education Section (unchanged)
+                                   
                                     VStack(alignment: .leading, spacing: 12) {
                                         Text("Education".localized())
                                             .font(.headline)
@@ -221,7 +221,7 @@ struct OnboardingSurveyView: View {
                                         }
                                     }
                                     
-                                    // Work Experience Section (unchanged)
+                                   
                                     VStack(alignment: .leading, spacing: 12) {
                                         Text("Work Experience".localized())
                                             .font(.headline)
@@ -249,7 +249,7 @@ struct OnboardingSurveyView: View {
                                                 }
                                                 .padding(.bottom, 4)
                                                 
-                                                // List of work experiences
+                                              
                                                 if workExperiences.isEmpty {
                                                     Text("No work history added.".localized())
                                                         .font(.subheadline)
@@ -262,7 +262,7 @@ struct OnboardingSurveyView: View {
                                                     }
                                                 }
                                                 
-                                                // Add experience button
+                                              
                                                 Button(action: {
                                                     editingExperience = nil
                                                     showAddExperienceSheet = true
@@ -283,7 +283,7 @@ struct OnboardingSurveyView: View {
                                     .background(Color(.systemGray6))
                                     .cornerRadius(10)
                                     
-                                    // UPDATED: Preferred Job Fields Section with hierarchical selection
+                                   
                                     VStack(alignment: .leading, spacing: 12) {
                                         Text("Preferred Job Fields".localized())
                                             .font(.headline)
@@ -301,7 +301,7 @@ struct OnboardingSurveyView: View {
                                         ))
                                         
                                         if !allFieldsSelected {
-                                            // Display selected categories and their fields
+                                          
                                             if selectedJobCategories.isEmpty {
                                                 Text("No job fields selected".localized())
                                                     .font(.subheadline)
@@ -318,7 +318,7 @@ struct OnboardingSurveyView: View {
                                                 }
                                             }
                                             
-                                            // Add category button
+                                  
                                             if !availableCategories.isEmpty {
                                                 Button(action: {
                                                     showingCategoryPicker = true
@@ -347,7 +347,7 @@ struct OnboardingSurveyView: View {
                                         }
                                     }
                                     
-                                    // Location Section (unchanged)
+                           
                                     VStack(alignment: .leading, spacing: 12) {
                                         Text("Location".localized())
                                             .font(.headline)
@@ -362,7 +362,7 @@ struct OnboardingSurveyView: View {
                                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                                 .padding(.bottom, 2)
                                                 .onAppear {
-                                                    // Initialize with existing country value
+                                            
                                                     countryVM.query = country
                                                 }
                                             
@@ -379,7 +379,7 @@ struct OnboardingSurveyView: View {
                                                                         country = suggestion
                                                                         countryVM.query = suggestion
                                                                         countryVM.clearSuggestions()
-                                                                        countryPlaceId = selectedPrediction.place_id // Save the place_id
+                                                                        countryPlaceId = selectedPrediction.place_id 
                                                                     }
                                                                 }
                                                             
@@ -406,7 +406,7 @@ struct OnboardingSurveyView: View {
                                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                                 .padding(.bottom, 2)
                                                 .onAppear {
-                                                    // Initialize with existing city value
+                                               
                                                     cityVM.query = city
                                                 }
                                             
@@ -426,7 +426,7 @@ struct OnboardingSurveyView: View {
                                                                                 cityVM.query = suggestion
                                                                                 cityVM.predictions = []
                                                                                 cityCoordinates = coords
-                                                                                cityPlaceId = selectedPrediction.place_id // Save the place_id
+                                                                                cityPlaceId = selectedPrediction.place_id 
                                                                             }
                                                                         }
                                                                     }
@@ -478,7 +478,7 @@ struct OnboardingSurveyView: View {
                         }
                     }
                     
-                    // Done Button
+                   
                     Button(action: saveSurvey) {
                         if isSaving {
                             ProgressView().tint(.white)
@@ -517,7 +517,7 @@ struct OnboardingSurveyView: View {
                 studyFieldVM.loadFromJSON()
                 jobFieldVM.loadFromJSON()
                 
-                // Add auth state listener with proper handling
+           
                 authStateListener = Auth.auth().addStateDidChangeListener { auth, user in
                     if user == nil {
                         print("⚠️ User authentication lost - navigating to login")
@@ -531,7 +531,7 @@ struct OnboardingSurveyView: View {
                 fetchUserData()
             }
             .onDisappear {
-                // Clean up auth listener
+              
                 if let listener = authStateListener {
                     Auth.auth().removeStateDidChangeListener(listener)
                 }
@@ -540,7 +540,7 @@ struct OnboardingSurveyView: View {
         }
     }
     
-    // View for displaying a selected category and its fields
+   
     func categorySelectionView(for categorySelection: SelectedJobCategory, at index: Int) -> some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
@@ -559,7 +559,7 @@ struct OnboardingSurveyView: View {
                 }
                 
                 Button(action: {
-                    // Remove this category
+                   
                     selectedJobCategories.remove(at: index)
                 }) {
                     Image(systemName: "trash.circle")
@@ -573,7 +573,7 @@ struct OnboardingSurveyView: View {
                     .foregroundColor(.secondary)
                     .padding(.vertical, 2)
             } else {
-                // Display selected fields for this category
+              
                 FlowLayout(spacing: 4) {
                     ForEach(Array(categorySelection.selectedFields), id: \.id) { field in
                         Text(isUkrainian ? field.uk : field.en)
@@ -592,7 +592,7 @@ struct OnboardingSurveyView: View {
         .cornerRadius(8)
     }
     
-    // Sheet for picking a category to add
+
     func categoryPickerSheet() -> some View {
         NavigationStack {
             List {
@@ -633,27 +633,27 @@ struct OnboardingSurveyView: View {
         return uid
     }
     
-    // Sheet for selecting fields within a category
+   
     func fieldSelectionSheet(for category: JobCategory) -> some View {
         let isEditing = currentlyEditingCategoryIndex != nil
         
-        // Find existing selection if editing
+       
         let existingSelection: Set<JobCategory.Field> = isEditing ?
         selectedJobCategories[currentlyEditingCategoryIndex!].selectedFields : []
         
         return NavigationStack {
             VStack {
                 List {
-                    // "Select All" option
+                  
                     Button(action: {
                         if isEditing {
-                            // Clear selections for this category when selecting all
+                            
                             selectedJobCategories[currentlyEditingCategoryIndex!].selectedFields = []
                         }
-                        // Close sheet when done
+                        
                         showingFieldSelectionSheet = false
                         if !isEditing {
-                            // Add new category with all fields
+                            
                             selectedJobCategories.append(SelectedJobCategory(category: category))
                         }
                         currentlyEditingCategoryIndex = nil
@@ -668,18 +668,18 @@ struct OnboardingSurveyView: View {
                         }
                     }
                     
-                    // Individual fields
+                 
                     ForEach(category.fields) { field in
                         Button(action: {
                             if isEditing {
-                                // Toggle this field in the existing category
+                               
                                 if selectedJobCategories[currentlyEditingCategoryIndex!].selectedFields.contains(field) {
                                     selectedJobCategories[currentlyEditingCategoryIndex!].selectedFields.remove(field)
                                 } else {
                                     selectedJobCategories[currentlyEditingCategoryIndex!].selectedFields.insert(field)
                                 }
                             } else {
-                                // Add new category with just this field selected
+                               
                                 let newSelection = SelectedJobCategory(
                                     category: category,
                                     selectedFields: [field]
@@ -719,7 +719,7 @@ struct OnboardingSurveyView: View {
         }
     }
     
-    // Custom view for displaying each work experience entry
+   
     func workExperienceListItem(_ experience: WorkExperience) -> some View {
         VStack(alignment: .leading, spacing: 4) {
             HStack {
@@ -769,7 +769,7 @@ struct OnboardingSurveyView: View {
     func languageListItem(_ languageEntry: UserLanguage) -> some View {
         VStack(alignment: .leading, spacing: 4) {
             HStack {
-                Text(languageEntry.displayName)  // Use displayName here
+                Text(languageEntry.displayName)  
                     .font(.headline)
                 Spacer()
                 
@@ -794,10 +794,9 @@ struct OnboardingSurveyView: View {
         .padding(.horizontal, 8)
         .background(Color(.systemGray5).opacity(0.5))
         .cornerRadius(8)
-        .id(LanguageManager.shared.selectedLanguage)  // Force view refresh on language change
+        .id(LanguageManager.shared.selectedLanguage)  
     }
-    
-    // Helper function to format date range
+ 
     func formatDateRange(start: Date, end: Date?, isCurrent: Bool) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM yyyy"
@@ -825,7 +824,7 @@ struct OnboardingSurveyView: View {
     }
     
     func fetchUserData() {
-        // Store UID at the beginning to ensure it's not null during the operation
+       
         guard let currentUser = Auth.auth().currentUser else {
             print("❌ No authenticated user found")
             isLoading = false
@@ -843,7 +842,7 @@ struct OnboardingSurveyView: View {
         print("✅ Fetching data for UID: \(uid)")
         
         
-        // Keep a local copy of the UID to use throughout this method
+       
         let userID = uid
         
         let db = Firestore.firestore()
@@ -858,9 +857,9 @@ struct OnboardingSurveyView: View {
             }
             
             if let data = snapshot?.data() {
-                // Load existing values with dispatch to main thread for UI updates
+               
                 DispatchQueue.main.async {
-                    // Load education level
+                
                     if let rawLevel = data["educationLevel"] as? String,
                        let parsedLevel = EducationLevel(rawValue: rawLevel) {
                         self.educationLevel = parsedLevel
@@ -874,40 +873,39 @@ struct OnboardingSurveyView: View {
                     self.cityPlaceId = data["city_place_id"] as? String ?? ""
                     self.countryPlaceId = data["country_place_id"] as? String ?? ""
                     
-                    // Set city coordinates if available
+                    
                     if let latitude = data["city_latitude"] as? Double,
                        let longitude = data["city_longitude"] as? Double {
                         self.cityCoordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
                     }
                     
-                    // Set the country and city query values
+                  
                     self.countryVM.query = self.country
                     self.cityVM.query = self.city
                     
-                    // Set acceptable distance
+                 
                     self.selectedDistance = data["acceptableDistance"] as? Int ?? 0
                     
-                    // Load job fields preference
+              
                     if let jobFieldData = data["preferredJobFields"] {
-                        // Check if it's an empty array or structure
+                       
                         if let jobFieldArray = jobFieldData as? [Any], jobFieldArray.isEmpty {
                             self.allFieldsSelected = true
                             self.selectedJobCategories = []
                             print("📋 Empty job fields array found, setting allFieldsSelected to true")
                         } else {
                             self.allFieldsSelected = false
-                            // Process job fields using the updated function
+                           
                             self.processJobFieldsFromDatabase(jobFieldData)
                         }
                     } else {
-                        // Default to all fields if not specified
+                      
                         self.allFieldsSelected = true
                         self.selectedJobCategories = []
                         print("📋 No job fields key found, defaulting to all fields")
                     }
                     
-                    // Find study category and field if available
-                    // Note: These are stored in English in the database
+            
                     if let categoryName = data["studyField"] as? String,
                        let specializationName = data["specialization"] as? String {
                         if let category = self.studyFieldVM.categories.first(where: { $0.category_en == categoryName }) {
@@ -920,7 +918,7 @@ struct OnboardingSurveyView: View {
                     }
                 }
                 
-                // Fetch and load work experiences and languages
+               
                 self.fetchWorkExperiences(uid: userID)
                 self.fetchUserLanguages(uid: userID)
             } else {
@@ -933,43 +931,43 @@ struct OnboardingSurveyView: View {
     }
     
     private func processJobFieldsFromDatabase(_ jobFieldData: Any) {
-        // Clear existing selections
+      
         selectedJobCategories = []
         
-        // Handle both old format (array of strings) and new format (array of dictionaries)
+       
         if let fieldNames = jobFieldData as? [String] {
-            // OLD FORMAT: Array of field names - convert to new structure
+            
             processLegacyJobFields(fieldNames)
         } else if let structuredData = jobFieldData as? [[String: Any]] {
-            // NEW FORMAT: Array of category selections with their fields
+            
             processStructuredJobFields(structuredData)
         }
         
         print("📋 Processed job fields into \(selectedJobCategories.count) categories")
     }
 
-    // Process old format data (array of field names)
+  
     private func processLegacyJobFields(_ fieldNames: [String]) {
-        // Create a dictionary to group fields by their category
+       
         var fieldsByCategory: [String: [JobCategory.Field]] = [:]
         
-        // Map each field name to its JobCategory.Field object and group by category
+      
         for fieldName in fieldNames {
-            // Find the field in all categories by English name
+           
             for category in jobFieldVM.categories {
                 if let field = category.fields.first(where: { $0.en == fieldName }) {
-                    // If we found the field, add it to the appropriate category group
+                 
                     if fieldsByCategory[category.id] == nil {
                         fieldsByCategory[category.id] = [field]
                     } else {
                         fieldsByCategory[category.id]?.append(field)
                     }
-                    break // Found the field, no need to check other categories
+                    break 
                 }
             }
         }
         
-        // Now create SelectedJobCategory objects from the grouped fields
+      
         for (categoryId, fields) in fieldsByCategory {
             if let category = jobFieldVM.categories.first(where: { $0.id == categoryId }) {
                 let selectedFields = Set(fields)
@@ -979,7 +977,7 @@ struct OnboardingSurveyView: View {
         }
     }
 
-    // Process new structured format data
+ 
     private func processStructuredJobFields(_ structuredData: [[String: Any]]) {
         for categoryData in structuredData {
             guard let categoryName = categoryData["category"] as? String,
@@ -987,17 +985,17 @@ struct OnboardingSurveyView: View {
                 continue
             }
             
-            // Find the category by English name
+           
             guard let category = jobFieldVM.categories.first(where: { $0.category_en == categoryName }) else {
                 continue
             }
             
-            // Convert field names to Field objects
+           
             let selectedFields = Set(selectedFieldNames.compactMap { fieldName in
                 category.fields.first(where: { $0.en == fieldName })
             })
             
-            // If selectedFields contains all fields in the category, treat as "all fields selected"
+          
             let finalSelectedFields = selectedFields.count == category.fields.count ? Set<JobCategory.Field>() : selectedFields
             
             let selection = SelectedJobCategory(category: category, selectedFields: finalSelectedFields)
@@ -1098,7 +1096,7 @@ struct OnboardingSurveyView: View {
                     return
                 }
                 
-                // Load the local JSON file with all language translations
+               
                 guard let url = Bundle.main.url(forResource: "Languages", withExtension: "json"),
                       let data = try? Data(contentsOf: url),
                       let allLanguages = try? JSONDecoder().decode([Language].self, from: data) else {
@@ -1124,7 +1122,7 @@ struct OnboardingSurveyView: View {
                     
                     return UserLanguage(
                         id: document.documentID,
-                        language: fullLanguage,  // Now includes both en and uk names
+                        language: fullLanguage, 
                         proficiency: proficiency
                     )
                 }
@@ -1137,7 +1135,7 @@ struct OnboardingSurveyView: View {
     
     
     func saveSurvey() {
-        // Store UID at the beginning to ensure it's not null during the operation
+        
         guard let currentUser = Auth.auth().currentUser else {
             print("❌ No authenticated user found")
             isSaving = false
@@ -1146,7 +1144,7 @@ struct OnboardingSurveyView: View {
         
         let userID = currentUser.uid
         
-        // Double-check UID is not empty
+      
         guard !userID.isEmpty else {
             print("❌ UID is empty")
             isSaving = false
@@ -1156,44 +1154,44 @@ struct OnboardingSurveyView: View {
         print("✅ Using UID: \(userID)")
         isSaving = true
         
-        // Debug output before saving
+       
         print("💾 Saving survey with allFieldsSelected: \(allFieldsSelected)")
         
-        // FIXED: Store job field selections as structured data instead of flat array
+
         let jobFieldSelections: [[String: Any]]
         
         if allFieldsSelected {
-            // If all fields are selected, save an empty array
+           
             jobFieldSelections = []
         } else {
-            // Store each category selection with its selected fields
+            
             jobFieldSelections = selectedJobCategories.map { categorySelection in
                 let categoryData: [String: Any] = [
-                    "category": categorySelection.category.category_en, // The main field
+                    "category": categorySelection.category.category_en, 
                     "categoryId": categorySelection.category.id,
                     "preferredJobFieldSpecializations": categorySelection.selectedFields.isEmpty ?
-                    categorySelection.category.fields.map { $0.en } : // All fields in category
-                    Array(categorySelection.selectedFields).map { $0.en } // Specific specializations
+                    categorySelection.category.fields.map { $0.en } : 
+                    Array(categorySelection.selectedFields).map { $0.en } 
                 ]
                 return categoryData
             }
         }
         
-        // Debug the data we're about to save
+       
         print("💾 Will save job field selections: \(jobFieldSelections)")
         
         let db = Firestore.firestore()
         
-        // Calculate total work experience from workExperiences array
+      
         let totalExperience = workExperiences.reduce(0.0) { $0 + $1.duration }
         
-        // Main user data - STORE STRUCTURED JOB FIELD DATA
+     
         let data: [String: Any] = [
             "educationLevel": educationLevel.rawValue,
             "studyField": selectedStudyCategory?.category_en ?? "",
             "specialization": selectedStudyField?.en ?? "",
-            // FIXED: Store job field selections as structured data
-            "preferredJobFields": jobFieldSelections, // This now contains category + specializations
+           
+            "preferredJobFields": jobFieldSelections, 
             "hasDriverLicense": hasDriverLicense,
             "desiredSpecialty": desiredSpecialty,
             "country": countryVM.query.isEmpty ? country : countryVM.query,
@@ -1207,7 +1205,7 @@ struct OnboardingSurveyView: View {
             "hasWorkHistory": experienceType == 1 && !workExperiences.isEmpty
         ]
         
-        // Save main user data
+ 
         db.collection("job_seekers").document(userID).setData(data, merge: true) { error in
             if let error = error {
                 print("❌ Failed to save survey: \(error.localizedDescription)")
@@ -1217,10 +1215,10 @@ struct OnboardingSurveyView: View {
                 return
             }
             
-            // Save work experiences in a subcollection
+     
             let workExperiencesRef = db.collection("job_seekers").document(userID).collection("workExperiences")
             
-            // First, delete all existing work experiences
+       
             workExperiencesRef.getDocuments { snapshot, error in
                 if let error = error {
                     print("❌ Failed to fetch existing work experiences: \(error.localizedDescription)")
@@ -1232,7 +1230,7 @@ struct OnboardingSurveyView: View {
                 
                 let dispatchGroup = DispatchGroup()
                 
-                // Delete existing documents
+            
                 if let documents = snapshot?.documents, !documents.isEmpty {
                     for document in documents {
                         dispatchGroup.enter()
@@ -1245,7 +1243,7 @@ struct OnboardingSurveyView: View {
                     }
                 }
                 
-                // Add new work experiences
+           
                 if self.experienceType == 1 {
                     for experience in self.workExperiences {
                         dispatchGroup.enter()
@@ -1274,11 +1272,11 @@ struct OnboardingSurveyView: View {
                     }
                 }
                 
-                // Notify when work experience saving is done
+     
                 dispatchGroup.notify(queue: .main) {
                     print("✅ Work experiences saved successfully")
                     
-                    // Now save languages
+                 
                     let languageDispatchGroup = DispatchGroup()
                     let languagesRef = db.collection("job_seekers").document(userID).collection("languages")
                     
@@ -1286,7 +1284,7 @@ struct OnboardingSurveyView: View {
                         if let error = error {
                             print("❌ Failed to fetch existing languages: \(error.localizedDescription)")
                         } else if let documents = snapshot?.documents {
-                            // Delete existing language documents
+                       
                             for document in documents {
                                 languageDispatchGroup.enter()
                                 languagesRef.document(document.documentID).delete { error in
@@ -1298,13 +1296,13 @@ struct OnboardingSurveyView: View {
                             }
                         }
                         
-                        // Add new languages - ALWAYS STORE ENGLISH LANGUAGE NAMES
+                     
                         for language in self.userLanguages {
                             languageDispatchGroup.enter()
                             
                             let languageData: [String: Any] = [
-                                "language": language.language.en, // ALWAYS use English language name
-                                "proficiency": language.proficiency.rawValue // Proficiency levels are already in English
+                                "language": language.language.en, 
+                                "proficiency": language.proficiency.rawValue 
                             ]
                             
                             languagesRef.document(language.id).setData(languageData) { error in
@@ -1315,10 +1313,10 @@ struct OnboardingSurveyView: View {
                             }
                         }
                         
-                        // When all languages are saved, notify success
+                
                         languageDispatchGroup.notify(queue: .main) {
                             print("✅ Languages saved successfully")
-                            // Now that everything is saved, we can update UI state
+                           
                             DispatchQueue.main.async {
                                 self.isSaving = false
                                 self.navigateToHome = true
